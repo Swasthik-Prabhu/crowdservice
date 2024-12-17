@@ -63,7 +63,7 @@ class Donations(Base):
 class Users(Base):
     __tablename__ = 'users'
 
-    user_id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String, nullable=False)
     contact = Column(Integer, nullable=False, unique=True)
     role = Column(String, nullable=False)

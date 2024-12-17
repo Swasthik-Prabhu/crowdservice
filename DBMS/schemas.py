@@ -31,7 +31,7 @@ class Donations(BaseModel):
 
 # Users Schema
 class Users(BaseModel):
-    user_id : int
+    #user_id : int
     name : str
     email : str
     password : str
@@ -43,7 +43,6 @@ class ShowUser(BaseModel):
     name : str
     email : str
     contact : int
-    role : str
 
 class LoginUser(BaseModel):
     email: str

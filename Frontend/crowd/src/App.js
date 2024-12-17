@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CampaignList from './components/Campaigns/CampaignList';
 import CampaignForm from './components/Campaigns/CampaignForm';
-import { SignUp, SignIn } from './AuthComponents/auth'; // Import SignUp and SignIn components
+import SignIn from './AuthComponents/signin';// Import SignUp and SignIn components
+import SignUp from './AuthComponents/signup';
 import DonorDashboard from './pages/DonorDashboard'; // Import DonorDashboard component
 
 function App() {
