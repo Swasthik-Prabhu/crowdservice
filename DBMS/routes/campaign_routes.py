@@ -1,34 +1,34 @@
-from fastapi import APIRouter, Depends, status, Response, HTTPException
-
-import models
-from database import engine, get_db
-from sqlalchemy.orm import Session, sessionmaker
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
 from typing import List
+from models import Campaign
+from database import get_db
 from schemas import Campaign as CampaignSchema
-from models import Base, Campaign
-
-
-models.Base.metadata.create_all(bind=engine)
-
 
 router = APIRouter(
-    # prefix="",
     tags=['Campaigns']
 )
-
 
 
 # Campaign Endpoints
 @router.post("/campaigns/", response_model=CampaignSchema)
 def create_campaign(campaign: CampaignSchema, db: Session = Depends(get_db)):
+    # Fetch the latest campaign by ID
+    latest_campaign = db.query(Campaign).order_by(Campaign.camp_id.desc()).first()
+
+    # Determine the new campaign ID
+    new_camp_id = (latest_campaign.camp_id + 1) if latest_campaign else 1
+
+    # Create a new campaign
     db_campaign = Campaign(
+        camp_id=new_camp_id,  # Automatically assign the new ID
         title=campaign.title,
         cause=campaign.cause,
         target_amount=campaign.target_amount,
-        raised_amount=campaign.raised_amount,
+        raised_amount=0,  # Default to 0 for newly created campaigns
         start_date=campaign.start_date,
         end_date=campaign.end_date,
-        creator_id=campaign.creator_id  # This links to the Users table
+        creator_id=campaign.creator_id  # Link to the Users table
     )
     db.add(db_campaign)
     db.commit()
@@ -42,6 +42,7 @@ def get_campaign(campaign_id: int, db: Session = Depends(get_db)):
     if not campaign:
         raise HTTPException(status_code=404, detail="Campaign not found")
     return campaign
+
 
 @router.get("/campaigns/", response_model=List[CampaignSchema])
 def get_all_campaigns(db: Session = Depends(get_db)):
@@ -60,7 +61,6 @@ def update_campaign(campaign_id: int, updated_campaign: CampaignSchema, db: Sess
     db.commit()
     db.refresh(campaign)
     return campaign
-
 
 
 @router.delete("/campaigns/{campaign_id}")

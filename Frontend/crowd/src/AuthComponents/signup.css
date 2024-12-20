@@ -1,0 +1,125 @@
+/* signup.css */
+
+/* Basic resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the signup form with gradient background */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  background: linear-gradient(135deg, #4a90e2, #a18585, #83828b); /* Gradient background */
+  padding: 20px;
+}
+
+/* Headings styles */
+.signup-container h1 {
+  font-size: 2.5em;
+  color: #333; /* Dark text color */
+  margin-bottom: 10px;
+}
+
+.signup-container h2 {
+  font-size: 1.5em;
+  color: #555; /* Slightly lighter text color */
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.signup-container form {
+  width: 100%;
+  max-width: 400px; /* Max width for the form */
+  background: white; /* White background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Inner padding */
+}
+
+/* Input fields styles */
+.signup-container input {
+  width: 100%; /* Full width */
+  padding: 10px; /* Inner padding */
+  margin-bottom: 15px; /* Space between fields */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1em; /* Font size */
+}
+
+/* Input fields focus effect */
+.signup-container input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow */
+}
+
+/* Button styles */
+.signup-container button {
+  width: 100%; /* Full width */
+  padding: 10px; /* Inner padding */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1.1em; /* Slightly larger font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+.signup-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error message styles */
+.error {
+  color: red; /* Red text color for error messages */
+  margin-top: 10px; /* Space above error message */
+}
+
+/* Sign-in option styles */
+.signin-option {
+  margin-top: 20px; /* Space above the sign-in option */
+  font-size: 1em; /* Font size */
+  color: #555; /* Slightly lighter text color */
+  text-align: center; /* Center align text */
+}
+
+.signin-link {
+  color: #007bff; /* Blue text color for link */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-decoration: underline; /* Underline for link */
+}
+
+.signin-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .signup-container h1 {
+    font-size: 2em; /* Smaller font size on small screens */
+  }
+
+  .signup-container h2 {
+    font-size: 1.2em; /* Smaller font size on small screens */
+  }
+
+  .signup-container form {
+    padding: 15px; /* Reduced padding on small screens */
+  }
+
+  .signup-container input {
+    padding: 8px; /* Reduced padding on input */
+  }
+
+  .signup-container button {
+    padding: 8px; /* Reduced padding on button */
+    font-size: 1em; /* Smaller font size on button */
+  }
+}

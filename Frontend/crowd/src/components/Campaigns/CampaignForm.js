@@ -7,12 +7,14 @@ const CampaignForm = () => {
     title: '',
     cause: '',
     target_amount: 0,
-    raised_amount: 0,
-    received_amount: 0,
     start_date: '',
     end_date: '',
     creator_id: '',
+    raised_amount: 0, // Default value set here
+    campaign_id: null
   });
+
+  const [campaignId, setCampaignId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,17 +24,20 @@ const CampaignForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createCampaign(form);
+      const { raised_amount, ...campaignData } = form; // Raised amount included by default
+      const response = await createCampaign({ ...campaignData, raised_amount });
       alert('Campaign created successfully!');
+      setCampaignId(response.data?.campaign_id || null);
+
+      // Reset form
       setForm({
         title: '',
         cause: '',
         target_amount: 0,
-        raised_amount: 0,
-        received_amount: 0,
         start_date: '',
         end_date: '',
         creator_id: '',
+        raised_amount: 0, // Reset raised amount
       });
     } catch (err) {
       alert('Error creating campaign: ' + (err.response?.data?.detail || err.message));
@@ -43,7 +48,6 @@ const CampaignForm = () => {
     <div className="campaign-form-container">
       <h2>Create a New Campaign</h2>
       <form onSubmit={handleSubmit} className="campaign-form">
-        
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input
@@ -81,28 +85,6 @@ const CampaignForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="raised_amount">Raised Amount:</label>
-          <input
-            type="number"
-            id="raised_amount"
-            name="raised_amount"
-            value={form.raised_amount}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="received_amount">Received Amount:</label>
-          <input
-            type="number"
-            id="received_amount"
-            name="received_amount"
-            value={form.received_amount}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="form-group">
           <label htmlFor="start_date">Start Date:</label>
           <input
             type="date"
@@ -129,7 +111,7 @@ const CampaignForm = () => {
         <div className="form-group">
           <label htmlFor="creator_id">Creator ID:</label>
           <input
-            type="number"
+            type="text"
             id="creator_id"
             name="creator_id"
             value={form.creator_id}
@@ -141,6 +123,12 @@ const CampaignForm = () => {
         <button type="submit" className="submit-button">
           Create Campaign
         </button>
+
+        {campaignId && (
+          <p className="success-message">
+            Campaign created successfully! ID: {campaignId}
+          </p>
+        )}
       </form>
     </div>
   );

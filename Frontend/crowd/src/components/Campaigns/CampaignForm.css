@@ -1,51 +1,138 @@
+/* General Styles */
 .campaign-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(50px);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.campaign-form-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.campaign-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Increased space between inputs */
+}
+
+label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px; /* Space between label and input */
+  display: block; /* Ensures label appears above input */
+}
+
+/* Styling for input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input:invalid {
+  border-color: red;
+}
+
+/* Success Message */
+.success-message {
+  color: #28a745;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+/* Button Styles */
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Focus Animation */
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+  top: -8px;
+  left: 10px;
+  font-size: 0.9rem;
+  color: #007bff;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover Effects */
+input:hover {
+  background-color: #f9f9f9;
+}
+
+input:focus,
+input:active {
+  background-color: #fff;
+  border-color: #007bff;
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
   }
-  
-  .campaign-form {
-    display: flex;
-    flex-direction: column;
+  50% {
+    transform: scale(1.05);
   }
-  
-  .form-group {
-    margin-bottom: 15px;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  
-  .submit-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+/* Submit Button Loading Animation */
+.submit-button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.submit-button[disabled]:hover {
+  background-color: #cccccc;
+}

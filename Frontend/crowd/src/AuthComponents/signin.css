@@ -1,0 +1,117 @@
+/* signin.css */
+
+/* Basic resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the signin form with gradient background */
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #4a90e2, #a18585, #83828b); /* Gradient background */
+    padding: 20px;
+}
+
+/* Headings styles */
+.signin-container h2 {
+    font-size: 2em;
+    color: #333; /* Dark text color */
+    margin-bottom: 20px;
+    text-align: center; /* Center align */
+}
+
+/* Form styles */
+.signin-container form {
+    width: 100%;
+    max-width: 400px; /* Max width for the form */
+    background: white; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Inner padding */
+}
+
+/* Input fields styles */
+.signin-container input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Inner padding */
+    margin-bottom: 15px; /* Space between fields */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+}
+
+/* Input fields focus effect */
+.signin-container input:focus {
+    border-color: #e63946; /* Red border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5); /* Subtle shadow */
+}
+
+/* Button styles */
+.signin-container button {
+    width: 100%; /* Full width */
+    padding: 10px; /* Inner padding */
+    background-color: #e63946; /* Red background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.1em; /* Slightly larger font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+.signin-container button:hover {
+    background-color: #a4161a; /* Darker red on hover */
+}
+
+/* Password toggle button styles */
+.signin-container button[type='button'] {
+    background: transparent; /* Transparent background */
+    color: #007bff; /* Blue text color */
+    border: none; /* No border */
+    font-size: 0.9em; /* Slightly smaller font */
+    padding: 1px; /* Inner padding */
+    margin-bottom: 10px; /* Space between fields */
+    text-align: start;
+
+    
+}
+
+/* Password toggle button hover effect */
+.signin-container button[type='button']:hover {
+    text-decoration: underline; /* Underline text on hover */
+}
+
+/* Error message styles */
+.error {
+    color: red; /* Red text color for error messages */
+    margin-top: 10px; /* Space above error message */
+    text-align: center; /* Center align error message */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .signin-container h2 {
+        font-size: 1.8em; /* Smaller font size on small screens */
+    }
+
+    .signin-container form {
+        padding: 15px; /* Reduced padding on small screens */
+    }
+
+    .signin-container input {
+        padding: 8px; /* Reduced padding on input */
+    }
+
+    .signin-container button {
+        padding: 8px; /* Reduced padding on button */
+        font-size: 1em; /* Smaller font size on button */
+    }
+}

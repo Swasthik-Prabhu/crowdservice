@@ -3,7 +3,7 @@ from datetime import date
 
 # Campaign Schema
 class Campaign(BaseModel):
-    camp_id : int 
+    #camp_id : int 
     title : str
     cause : str
     target_amount : float

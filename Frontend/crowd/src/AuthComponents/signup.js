@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS } from './apiConfig';
+import './signup.css';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -15,27 +16,6 @@ function SignUp() {
 
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
-  // Fetch the max ID when component mounts
-  // useEffect(() => {
-  //   const fetchMaxId = async () => {
-  //     try {
-  //       const response = await axios.get(API_ENDPOINTS.MAX_ID);
-  //       const maxId = response.data.max_id;
-  //       const newUserId = maxId + 1;
-
-  //       setFormData((prevData) => ({
-  //         ...prevData,
-  //         user_id: newUserId, // Set the new user ID
-  //       }));
-  //     } catch (err) {
-  //       const errorMessage = err.response?.data?.message || 'Error fetching user ID.';
-  //       setError(errorMessage);
-  //     }
-  //   };
-
-  //   fetchMaxId();
-  // }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,11 +37,10 @@ function SignUp() {
 
   return (
     <div className="signup-container">
+      <h1>Welcome to Our Platform!</h1>
+
       <h2>Sign Up</h2>
       <form onSubmit={handleSignUp}>
-        {/* ID is generated automatically */}
-        {/*<input type="number" name="user_id" placeholder="User ID" value={formData.user_id} readOnly />}*/}
-
         <input
           type="text"
           name="name"
@@ -101,6 +80,10 @@ function SignUp() {
         <button type="submit">Sign Up</button>
       </form>
       {error && <p className="error">{error}</p>}
+
+      <p className="signin-option">
+        Already have an account? <span onClick={() => navigate('/signin')} className="signin-link">Sign In</span>
+      </p>
     </div>
   );
 }

@@ -1,18 +1,36 @@
-/* CampaignList.css */
-
+/* General Body Styling */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
+  background: linear-gradient(to bottom right, #f0f4f8, #ffffff); /* Soft gradient background */
   margin: 0;
   padding: 0;
+  color: #333; /* Dark text for better readability */
 }
 
+/* Campaigns List Section Styling */
+.campaigns-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background: #ffffff; /* Solid white background for campaign section */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  max-width: 1200px;
+  margin: 40px auto; /* Center the section and give spacing */
+}
+
+/* Header Styling */
 h1 {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
   color: #333;
+  font-size: 2.5em;
+  font-weight: 700;
 }
 
+/* Error Styling */
 .error {
   color: #d9534f;
   text-align: center;
@@ -20,34 +38,28 @@ h1 {
   font-weight: bold;
 }
 
-.campaigns-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
+/* Campaign Card Styling */
 .campaign-card {
   background-color: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .campaign-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Slight lift effect */
 }
 
 .campaign-card h3 {
-  font-size: 1.5em;
+  font-size: 1.6em;
   color: #007bff;
   margin: 10px 0;
+  font-weight: 600;
 }
 
 .campaign-card p {
@@ -60,15 +72,17 @@ h1 {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.2s;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .campaign-card button:hover {
   background-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Modal Styles */
@@ -88,10 +102,10 @@ h1 {
 .modal {
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
@@ -114,10 +128,10 @@ h1 {
 }
 
 .modal input[type="number"] {
-  padding: 8px;
-  font-size: 1em;
+  padding: 10px;
+  font-size: 1.1em;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .modal-buttons {
@@ -128,12 +142,12 @@ h1 {
 
 .modal-buttons button {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 4px;
-  font-size: 1em;
+  border-radius: 6px;
+  font-size: 1.1em;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
 }
 
 .modal-buttons button[type="submit"] {

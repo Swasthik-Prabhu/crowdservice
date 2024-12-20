@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS } from './apiConfig';
+import './signin.css'; // Import the CSS file at the top of your SignIn.js file
+
 
 function SignIn() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -45,29 +47,24 @@ function SignIn() {
           required
         />
 
-        <div style={{ position: 'relative' }}>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            placeholder="Password"
-            value={credentials.password}
-            onChange={handleInputChange}
-            required
-          />
-          <button
-            type="button"
-            style={{
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              cursor: 'pointer',
-            }}
-            onClick={() => setShowPassword((prev) => !prev)}
-          >
-            {showPassword ? 'Hide' : 'Show'}
-          </button>
-        </div>
+<div style={{ position: 'relative' }}>
+  <input
+    type={showPassword ? 'text' : 'password'}
+    name="password"
+    placeholder="Password"
+    value={credentials.password}
+    onChange={handleInputChange}
+    required
+  />
+</div>
+<button
+  type="button"
+  className="password-toggle"
+  onClick={() => setShowPassword((prev) => !prev)}
+>
+  {showPassword ? 'Hide' : 'Show'}
+</button>
+
 
         <button type="submit">Sign In</button>
       </form>

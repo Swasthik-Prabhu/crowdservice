@@ -13,7 +13,7 @@ function DonorDashboard() {
       <CustomNavbar /> {/* Use the Navbar component here */}
 
       <Container className="mt-4">
-        <h2>Welcome to Your Donor Dashboard</h2>
+        
         
         {/* Display the CampaignList component */}
         <CampaignList />
