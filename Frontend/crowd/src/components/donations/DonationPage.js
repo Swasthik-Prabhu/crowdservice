@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import './DonationPage.css';
+import './DonationPage.css';
 
 const DonationPage = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const DonationPage = () => {
     try {
       const response = await axios.post("http://127.0.0.1:8000/donations/", formData);
       alert(`Donation Successful! Transaction ID: ${response.data.transaction_id}`);
-      navigate("/"); // Redirect back to the campaign list
+      navigate("/donor-dashboard"); // Redirect back to the campaign list
     } catch (err) {
       console.error("Error submitting donation:", err);
       setError("Failed to process the donation. Please try again.");
