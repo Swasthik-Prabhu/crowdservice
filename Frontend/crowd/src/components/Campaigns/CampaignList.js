@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CampaignList.css';
 
 const CampaignList = () => {
   const [campaigns, setCampaigns] = useState([]);
-  const [selectedCampaign, setSelectedCampaign] = useState(null);
-  const [donationAmount, setDonationAmount] = useState(0);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/campaigns/')
@@ -18,19 +18,7 @@ const CampaignList = () => {
   }, []);
 
   const handleDonateClick = (campaign) => {
-    setSelectedCampaign(campaign);
-  };
-
-  const handleDonationSubmit = (e) => {
-    e.preventDefault();
-    if (!donationAmount || donationAmount <= 0) {
-      alert('Please enter a valid donation amount.');
-      return;
-    }
-
-    alert(`Donated successfully! You donated $${donationAmount} to ${selectedCampaign.title}.`);
-    setDonationAmount(0);
-    setSelectedCampaign(null);
+    navigate('/donate', { state: { campaign } }); // Pass campaign details via state
   };
 
   return (
@@ -47,29 +35,6 @@ const CampaignList = () => {
           </div>
         ))}
       </div>
-
-      {selectedCampaign && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>Donate to {selectedCampaign.title}</h2>
-            <form onSubmit={handleDonationSubmit}>
-              <label htmlFor="donationAmount">Amount:</label>
-              <input
-                type="number"
-                id="donationAmount"
-                value={donationAmount}
-                onChange={(e) => setDonationAmount(Number(e.target.value))}
-                min="1"
-                required
-              />
-              <div className="modal-buttons">
-                <button type="submit">Confirm Donation</button>
-                <button type="button" onClick={() => setSelectedCampaign(null)}>Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

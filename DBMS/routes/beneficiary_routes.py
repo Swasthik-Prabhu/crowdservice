@@ -23,11 +23,22 @@ router = APIRouter(
 # Beneficiary Endpoints
 @router.post("/beneficiaries/", response_model=BeneficiariesSchema)
 def create_beneficiary(beneficiary: BeneficiariesSchema, db: Session = Depends(get_db)):
-    db_beneficiary = Beneficiaries(**beneficiary.dict())
+
+    Latest_beneficiary = db.query(Beneficiaries).order_by(Beneficiaries.beneficiary_id.desc()).first()
+
+    # Determine the new campaign ID
+    new_camp_id = (Latest_beneficiary.beneficiary_id + 1) if Latest_beneficiary else 1
+    db_beneficiary = Beneficiaries( 
+        beneficiary_id=new_camp_id,  # Automatically assign the new ID
+        name=beneficiary.name,
+        contact=beneficiary.contact,
+        address=beneficiary.address,
+        campaign_id=beneficiary.campaign_id
+    )
     db.add(db_beneficiary)
     db.commit()
     db.refresh(db_beneficiary)
-    return db_beneficiary
+    return db_beneficiary, Beneficiaries.beneficiary_id
 
 @router.get("/beneficiaries/{beneficiary_id}/", response_model=BeneficiariesSchema)
 def get_beneficiary(beneficiary_id: int, db: Session = Depends(get_db)):

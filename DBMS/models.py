@@ -45,7 +45,7 @@ class Beneficiaries(Base):
 class Donations(Base):
     __tablename__ = 'donations'
 
-    donation_id = Column(Integer, primary_key=True, index=True)
+    donation_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     amount = Column(Float, nullable=False)
     donation_date = Column(Date, nullable=False)
     transaction_id = Column(Integer, nullable=False, unique=True)

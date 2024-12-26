@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { createCampaign } from '../../services/api';
 import './CampaignForm.css'; // Optional CSS file for styling
+import BeneficiaryPage from '../beneficiaries/BeneficiaryPage'
 
 const CampaignForm = () => {
+  const navigate = useNavigate(); // Initialize navigate hook
   const [form, setForm] = useState({
     title: '',
     cause: '',
@@ -11,7 +14,7 @@ const CampaignForm = () => {
     end_date: '',
     creator_id: '',
     raised_amount: 0, // Default value set here
-    campaign_id: null
+    campaign_id: null,
   });
 
   const [campaignId, setCampaignId] = useState(null);
@@ -28,6 +31,9 @@ const CampaignForm = () => {
       const response = await createCampaign({ ...campaignData, raised_amount });
       alert('Campaign created successfully!');
       setCampaignId(response.data?.campaign_id || null);
+
+      // Navigate to BeneficiaryPage
+      navigate('/beneficiary'); // Adjust the path to match your routing setup
 
       // Reset form
       setForm({

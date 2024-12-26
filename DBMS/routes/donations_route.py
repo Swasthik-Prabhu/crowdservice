@@ -22,6 +22,8 @@ router = APIRouter(
 def create_donation(donation: DonationsSchema, db: Session = Depends(get_db)):
     # Check if user exists
     db_user = db.query(Users).filter(Users.user_id == donation.user_id).first()
+
+    
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     

@@ -14,7 +14,7 @@ class Campaign(BaseModel):
 
 # Beneficiaries Schema
 class Beneficiaries(BaseModel):
-    beneficiary_id : int
+    # beneficiary_id : int
     name : str
     contact : int
     address : str
@@ -22,7 +22,7 @@ class Beneficiaries(BaseModel):
 
 # Donations Schema
 class Donations(BaseModel):
-    donation_id : int
+    # donation_id : int
     amount : float
     donation_date : date
     transaction_id : int
