@@ -18,7 +18,7 @@ const CampaignList = () => {
   }, []);
 
   const handleDonateClick = (campaign) => {
-    navigate('/donate', { state: { campaign } }); // Pass campaign details via state
+    navigate('/donate', { state: { campaign_id: campaign.camp_id } }); // Pass campaign_id via state
   };
 
   return (
@@ -30,7 +30,8 @@ const CampaignList = () => {
           <div key={campaign.camp_id} className="campaign-card">
             <h3>{campaign.title}</h3>
             <p>{campaign.cause}</p>
-            <p>Raised: ${campaign.raised_amount} / Target: ${campaign.target_amount}</p>
+            {/* <p>ID : {campaign.camp_id}</p> */}
+            <p>Raised: ₹{campaign.raised_amount} / Target: ₹{campaign.target_amount}</p>
             <button onClick={() => handleDonateClick(campaign)}>Donate</button>
           </div>
         ))}
@@ -40,3 +41,4 @@ const CampaignList = () => {
 };
 
 export default CampaignList;
+

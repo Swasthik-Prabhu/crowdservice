@@ -12,6 +12,16 @@ class Campaign(BaseModel):
     end_date : date
     creator_id : int  # foreign key
 
+class showcampaigns(BaseModel):
+    camp_id : int 
+    title : str
+    cause : str
+    target_amount : float
+    raised_amount : float
+    start_date : date
+    end_date : date
+    creator_id : int
+
 # Beneficiaries Schema
 class Beneficiaries(BaseModel):
     # beneficiary_id : int

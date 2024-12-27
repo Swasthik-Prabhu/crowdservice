@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from models import Campaign
 from database import get_db
-from schemas import Campaign as CampaignSchema
+from schemas import Campaign as CampaignSchema, showcampaigns
 
 router = APIRouter(
     tags=['Campaigns']
@@ -44,7 +44,7 @@ def get_campaign(campaign_id: int, db: Session = Depends(get_db)):
     return campaign
 
 
-@router.get("/campaigns/", response_model=List[CampaignSchema])
+@router.get("/campaigns/", response_model=List[showcampaigns])
 def get_all_campaigns(db: Session = Depends(get_db)):
     return db.query(Campaign).all()
 
