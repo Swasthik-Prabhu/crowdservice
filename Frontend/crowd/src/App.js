@@ -9,6 +9,8 @@ import AboutPage from './pages/AboutPage';
 import ContactUs from './pages/ContactUs';
 import BeneficiaryPage from './components/beneficiaries/BeneficiaryPage'; // Import BeneficiaryPage
 import DonationPage from './components/donations/DonationPage'; // Import DonationPage
+import AdminDashboard from './pages/AdminDashboard';
+import AdminCampaignForm from './components/Admincampaign/CampaignForm';
 
 function App() {
   return (
@@ -28,10 +30,16 @@ function App() {
 
           {/* Route for Donor Dashboard */}
           <Route path="/donor-dashboard" element={<DonorDashboard />} />  
+          
 
           {/* Route for Beneficiary Page */}
           <Route path="/beneficiaries" element={<BeneficiaryPage />} /> 
           <Route path="/donate" element={<DonationPage />} />
+
+          {/* Route for Admin Dashboard */}
+          <Route path = "/admin-panel" element={<AdminDashboard/>} />
+          <Route path = "/update-campaign" element={<AdminCampaignForm/>} />
+
         </Routes>
       </div>
     </Router>
@@ -39,3 +47,84 @@ function App() {
 }
 
 export default App;
+
+
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import CampaignForm from './components/Campaigns/CampaignForm';
+// import SignIn from './AuthComponents/signin';
+// import SignUp from './AuthComponents/signup';
+// import DonorDashboard from './pages/DonorDashboard';
+// import Profile from './pages/profile';
+// import AboutPage from './pages/AboutPage';
+// import ContactUs from './pages/ContactUs';
+// import BeneficiaryPage from './components/beneficiaries/BeneficiaryPage';
+// import DonationPage from './components/donations/DonationPage';
+// import ProtectedRoute from './AuthComponents/ProtectedRoute'; // Import ProtectedRoute
+// import { UserProvider } from './AuthComponents/UserContext'; // Import UserProvider for context
+
+// function App() {
+//   return (
+//     <UserProvider>
+//       <Router>
+//         <div>
+//           <Routes>
+//             {/* Public Routes */}
+//             <Route path="/" element={<SignUp />} />
+//             <Route path="/signin" element={<SignIn />} />
+//             <Route path="/about" element={<AboutPage />} />
+//             <Route path="/contact-us" element={<ContactUs />} />
+
+//             {/* Protected Routes */}
+//             <Route
+//               path="/create-campaign"
+//               element={
+//                 <ProtectedRoute>
+//                   <CampaignForm />
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/profile"
+//               element={
+//                 <ProtectedRoute>
+//                   <Profile />
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/donor-dashboard"
+//               element={
+//                 <ProtectedRoute>
+//                   <DonorDashboard />
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/beneficiaries"
+//               element={
+//                 <ProtectedRoute>
+//                   <BeneficiaryPage />
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/donate"
+//               element={
+//                 <ProtectedRoute>
+//                   <DonationPage />
+//                 </ProtectedRoute>
+//               }
+//             />
+
+//             {/* Catch-all for undefined routes */}
+//             <Route path="*" element={<div>404 - Page Not Found</div>} />
+//           </Routes>
+//         </div>
+//       </Router>
+//     </UserProvider>
+//   );
+// }
+
+// export default App;
+

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from models import Campaign
 from database import get_db
-from schemas import Campaign as CampaignSchema, showcampaigns
+from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns
 
 router = APIRouter(
     tags=['Campaigns']
@@ -49,8 +49,8 @@ def get_all_campaigns(db: Session = Depends(get_db)):
     return db.query(Campaign).all()
 
 
-@router.put("/campaigns/{campaign_id}", response_model=CampaignSchema)
-def update_campaign(campaign_id: int, updated_campaign: CampaignSchema, db: Session = Depends(get_db)):
+@router.put("/campaigns/{campaign_id}", response_model=updatecampaigns)
+def update_campaign(campaign_id: int, updated_campaign: updatecampaigns, db: Session = Depends(get_db)):
     campaign = db.query(Campaign).filter(Campaign.camp_id == campaign_id).first()
     if not campaign:
         raise HTTPException(status_code=404, detail="Campaign not found")
