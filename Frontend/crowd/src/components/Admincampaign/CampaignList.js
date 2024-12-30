@@ -44,7 +44,7 @@ const AdminCampaignList = () => {
             <p>Start Date: {campaign.start_date}</p>
             <p>End Date: {campaign.end_date}</p>
             <button onClick={() => handleUpdateClick(campaign)}>Update</button>
-            <button onClick={() => handleDeleteClick(campaign.camp_id)}>Delete</button>
+            {/* <button onClick={() => handleDeleteClick(campaign.camp_id)}>Delete</button> */}
           </div>
         ))}
       </div>

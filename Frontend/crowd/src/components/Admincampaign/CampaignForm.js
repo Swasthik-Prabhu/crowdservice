@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { updateCampaign } from '../../services/api';
 import './CampaignForm.css';
+import AdminNavbar from '../../pages/Adminnavbar';
 
 const AdminCampaignForm = () => {
   const location = useLocation();
@@ -55,9 +56,11 @@ const AdminCampaignForm = () => {
 
   return (
     <div>
-      <h2>Update Campaign</h2>
-    <div className="campaign-form-container">
+      <AdminNavbar/>
+    <div>
       
+    <div className="campaign-form-container">
+    <h2>Update Campaign</h2>
       <form onSubmit={handleSubmit} className="campaign-form">
         <div className="form-group">
           <label htmlFor="campaign_id">Campaign ID:</label>
@@ -145,6 +148,7 @@ const AdminCampaignForm = () => {
           Update Campaign
         </button>
       </form>
+    </div>
     </div>
     </div>
   );
