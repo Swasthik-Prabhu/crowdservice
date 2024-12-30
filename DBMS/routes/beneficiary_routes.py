@@ -21,24 +21,30 @@ router = APIRouter(
 
 
 # Beneficiary Endpoints
-@router.post("/beneficiaries/", response_model=BeneficiariesSchema)
+@router.post("/createbeneficiaries/", response_model=BeneficiariesSchema)
 def create_beneficiary(beneficiary: BeneficiariesSchema, db: Session = Depends(get_db)):
+    # Fetch the latest beneficiary ID to determine the new one
+    latest_beneficiary = db.query(models.Beneficiaries).order_by(models.Beneficiaries.beneficiary_id.desc()).first()
 
-    Latest_beneficiary = db.query(Beneficiaries).order_by(Beneficiaries.beneficiary_id.desc()).first()
+    # Determine the new beneficiary ID
+    new_beneficiary_id = (latest_beneficiary.beneficiary_id + 1) if latest_beneficiary else 1
 
-    # Determine the new campaign ID
-    new_camp_id = (Latest_beneficiary.beneficiary_id + 1) if Latest_beneficiary else 1
-    db_beneficiary = Beneficiaries( 
-        beneficiary_id=new_camp_id,  # Automatically assign the new ID
+    # Create a new beneficiary object to be added to the database
+    db_beneficiary = models.Beneficiaries( 
+        beneficiary_id=new_beneficiary_id,
         name=beneficiary.name,
         contact=beneficiary.contact,
         address=beneficiary.address,
         campaign_id=beneficiary.campaign_id
     )
+    
+    # Add the new beneficiary to the session
     db.add(db_beneficiary)
     db.commit()
     db.refresh(db_beneficiary)
-    return db_beneficiary, Beneficiaries.beneficiary_id
+
+    # Return the newly created beneficiary using the Pydantic schema
+    return db_beneficiary
 
 @router.get("/beneficiaries/{beneficiary_id}/", response_model=BeneficiariesSchema)
 def get_beneficiary(beneficiary_id: int, db: Session = Depends(get_db)):
@@ -70,3 +76,9 @@ def delete_beneficiary(beneficiary_id: int, db: Session = Depends(get_db)):
     db.delete(beneficiary)
     db.commit()
     return {"detail": "Beneficiary deleted successfully"}
+
+
+@router.get("/beneficiaries")
+async def get_all(db: Session = Depends(get_db)):
+    beneficiaries = db.query(Beneficiaries).all()  # SQLAlchemy ORM objects
+    return beneficiaries  # ORM objects are not directly serializable

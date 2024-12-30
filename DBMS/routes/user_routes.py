@@ -106,3 +106,37 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
 
 
 
+
+
+# Admin User 
+
+@router.post("/Admin", response_model= ShowUser)
+def create_admin(user: UsersSchema, db: Session = Depends(get_db)):
+    # Check if email or contact already exists
+    db_user_email = db.query(Users).filter(Users.email == user.email).first()
+    db_user_contact = db.query(Users).filter(Users.contact == user.contact).first()
+    if db_user_email:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    if db_user_contact:
+        raise HTTPException(status_code=400, detail="Contact already registered")
+    
+
+   
+    hashedPassword = Hash.bcrypt(password = user.password)
+    db_user = Users(
+        name=user.name,
+        email=user.email,
+        password=hashedPassword,
+        contact=user.contact,
+        role='Admin'  #user role and admin role:: user role default:: Admin role changed from db directly
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    # Fetch the latest user
+    latest_user = db.query(Users).order_by(Users.user_id.desc()).first()
+    
+    return latest_user
+
+
+

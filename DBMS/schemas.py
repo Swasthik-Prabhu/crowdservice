@@ -40,6 +40,9 @@ class Beneficiaries(BaseModel):
     address : str
     campaign_id : int  # foreign key
 
+    class Config:
+        orm_mode = True
+
 # Donations Schema
 class Donations(BaseModel):
     # donation_id : int
@@ -67,6 +70,8 @@ class ShowUser(BaseModel):
 class LoginUser(BaseModel):
     email: str
     password: str
+
+
 
 
 # Report Schema

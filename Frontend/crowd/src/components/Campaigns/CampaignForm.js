@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { createCampaign } from '../../services/api';
 import './CampaignForm.css'; // Optional CSS file for styling
-import BeneficiaryPage from '../beneficiaries/BeneficiaryPage'
+// import BeneficiaryPage from '../beneficiaries/BeneficiaryPage'
 
 const CampaignForm = () => {
   const navigate = useNavigate(); // Initialize navigate hook
@@ -33,7 +33,7 @@ const CampaignForm = () => {
       setCampaignId(response.data?.campaign_id || null);
 
       // Navigate to BeneficiaryPage
-      navigate('/beneficiary'); // Adjust the path to match your routing setup
+      navigate('/beneficiaries'); // Adjust the path to match your routing setup
 
       // Reset form
       setForm({
