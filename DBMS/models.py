@@ -79,7 +79,7 @@ class Users(Base):
 class Report(Base):
     __tablename__ = 'reports'
 
-    report_id = Column(Integer, primary_key=True, index=True)
+    report_id = Column(Integer, primary_key=True, index=True,autoincrement=True)
     campaign_id = Column(Integer, ForeignKey('campaigns.camp_id'), nullable=False)
     report_date = Column(Date, nullable=False)
     description = Column(String, nullable=False)

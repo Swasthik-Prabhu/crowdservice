@@ -4,7 +4,7 @@ import models
 from database import engine, get_db
 from sqlalchemy.orm import Session, sessionmaker
 from typing import List
-from schemas import Report as ReportSchema
+from schemas import Report as ReportSchema, show_report
 from models import Base, Report
 
 
@@ -32,6 +32,10 @@ def get_report(report_id: int, db: Session = Depends(get_db)):
     if not report:
         raise HTTPException(status_code=404, detail="Report not found")
     return report
+
+@router.get("/reportsall/", response_model=list[show_report])
+def get_all(db: Session = Depends(get_db)):
+    return db.query(Report).all()
 
 @router.put("/reports/{report_id}", response_model=ReportSchema)
 def update_report(report_id: int, updated_report: ReportSchema, db: Session = Depends(get_db)):

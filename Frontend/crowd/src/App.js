@@ -11,6 +11,7 @@ import BeneficiaryPage from './components/beneficiaries/BeneficiaryPage'; // Imp
 import DonationPage from './components/donations/DonationPage'; // Import DonationPage
 import AdminDashboard from './pages/AdminDashboard';
 import AdminCampaignForm from './components/Admincampaign/CampaignForm';
+import AdminReportList from './components/Adminreports/Report';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           {/* Route for Admin Dashboard */}
           <Route path = "/admin-panel" element={<AdminDashboard/>} />
           <Route path = "/update-campaign" element={<AdminCampaignForm/>} />
+          <Route path = "/report" element={<AdminReportList/>} />
 
         </Routes>
       </div>

@@ -10,17 +10,20 @@ function AdminNavbar() {
           Admin Panel 
         </Link>
       </div>
-      {/* <ul className="navbar-menu">
+      <ul className="navbar-menu">
         <li className="navbar-item">
-          <Link to="/about" className="navbar-link">
-            About
+          <Link to="/admin-panel" className="navbar-link">
+            Home
           </Link>
         </li>
+         
         <li className="navbar-item">
-          <Link to="/profile" className="navbar-link">
-            Profile
+          <Link to="/report" className="navbar-link">
+          Reports
           </Link>
+          
         </li>
+        {/*
         <li className="navbar-item">
           <Link to="/create-campaign" className="navbar-link">
             Create Campaign
@@ -31,8 +34,8 @@ function AdminNavbar() {
           <Link to="/contact-us" className="navbar-link">
             Contact Us
           </Link>
-        </li>
-      </ul> */}
+        </li>*/}
+      </ul> 
     </nav>
   );
 }

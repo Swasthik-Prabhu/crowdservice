@@ -80,11 +80,19 @@ class LoginUser(BaseModel):
 
 # Report Schema
 class Report(BaseModel):
+    # report_id : int
+    campaign_id : int
+    report_date : date
+    description : str
+    user_id : int  # foreign key
+
+class show_report(BaseModel):
     report_id : int
     campaign_id : int
     report_date : date
     description : str
     user_id : int  # foreign key
+
 
 # MileStone Schema
 class MileStone(BaseModel):
