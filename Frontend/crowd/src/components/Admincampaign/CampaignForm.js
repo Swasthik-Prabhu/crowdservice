@@ -54,8 +54,10 @@ const AdminCampaignForm = () => {
   };
 
   return (
-    <div className="campaign-form-container">
+    <div>
       <h2>Update Campaign</h2>
+    <div className="campaign-form-container">
+      
       <form onSubmit={handleSubmit} className="campaign-form">
         <div className="form-group">
           <label htmlFor="campaign_id">Campaign ID:</label>
@@ -143,6 +145,7 @@ const AdminCampaignForm = () => {
           Update Campaign
         </button>
       </form>
+    </div>
     </div>
   );
 };

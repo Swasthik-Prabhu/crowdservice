@@ -1,8 +1,11 @@
 import React from 'react';
 import './ContactUs.css';
+import Navbar from './navbar';
 
 const ContactUs = () => {
   return (
+    <div>
+      <Navbar/>
     <div className="contact-us-container">
       <div className="contact-header">
         <h1>Contact Us</h1>
@@ -36,6 +39,7 @@ const ContactUs = () => {
           <button type="submit" className="submit-btn">Submit</button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

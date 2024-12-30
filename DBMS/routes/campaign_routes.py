@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from models import Campaign
 from database import get_db
-from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns
+from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse
 
 router = APIRouter(
     tags=['Campaigns']
@@ -11,29 +11,26 @@ router = APIRouter(
 
 
 # Campaign Endpoints
-@router.post("/campaigns/", response_model=CampaignSchema)
+@router.post("/campaigns/", response_model=CampaignResponse)
 def create_campaign(campaign: CampaignSchema, db: Session = Depends(get_db)):
-    # Fetch the latest campaign by ID
     latest_campaign = db.query(Campaign).order_by(Campaign.camp_id.desc()).first()
-
-    # Determine the new campaign ID
     new_camp_id = (latest_campaign.camp_id + 1) if latest_campaign else 1
 
-    # Create a new campaign
     db_campaign = Campaign(
-        camp_id=new_camp_id,  # Automatically assign the new ID
+        camp_id=new_camp_id,
         title=campaign.title,
         cause=campaign.cause,
         target_amount=campaign.target_amount,
-        raised_amount=0,  # Default to 0 for newly created campaigns
+        raised_amount=0,
         start_date=campaign.start_date,
         end_date=campaign.end_date,
-        creator_id=campaign.creator_id  # Link to the Users table
+        creator_id=campaign.creator_id
     )
     db.add(db_campaign)
     db.commit()
     db.refresh(db_campaign)
-    return db_campaign
+    return {"id" : new_camp_id}
+ # Return the created campaign object
 
 
 @router.get("/campaigns/{campaign_id}", response_model=CampaignSchema)

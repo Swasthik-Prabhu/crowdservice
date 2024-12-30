@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { createCampaign } from '../../services/api';
 import './CampaignForm.css'; // Optional CSS file for styling
 // import BeneficiaryPage from '../beneficiaries/BeneficiaryPage'
+import Navbar from '../../pages/navbar';
 
 const CampaignForm = () => {
   const navigate = useNavigate(); // Initialize navigate hook
@@ -27,30 +28,34 @@ const CampaignForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { raised_amount, ...campaignData } = form; // Raised amount included by default
-      const response = await createCampaign({ ...campaignData, raised_amount });
-      alert('Campaign created successfully!');
-      setCampaignId(response.data?.campaign_id || null);
+        const { raised_amount, ...campaignData } = form; // Raised amount included by default
+        const response = await createCampaign({ ...campaignData, raised_amount });
+        
+        const camp_id = response.data.id; // Capture campaign ID from backend
+        alert('Campaign created successfully!');
 
-      // Navigate to BeneficiaryPage
-      navigate('/beneficiaries'); // Adjust the path to match your routing setup
+        // Navigate to BeneficiaryPage with camp_id
+        navigate(`/beneficiaries/${camp_id}`); // Assuming you use dynamic routes
 
-      // Reset form
-      setForm({
-        title: '',
-        cause: '',
-        target_amount: 0,
-        start_date: '',
-        end_date: '',
-        creator_id: '',
-        raised_amount: 0, // Reset raised amount
-      });
+        // Reset form
+        setForm({
+            title: '',
+            cause: '',
+            target_amount: 0,
+            start_date: '',
+            end_date: '',
+            creator_id: '',
+            raised_amount: 0,
+        });
     } catch (err) {
-      alert('Error creating campaign: ' + (err.response?.data?.detail || err.message));
+        alert('Error creating campaign: ' + (err.response?.data?.detail || err.message));
     }
-  };
+};
 
+  
   return (
+    <div>
+      <Navbar/>
     <div className="campaign-form-container">
       <h2>Create a New Campaign</h2>
       <form onSubmit={handleSubmit} className="campaign-form">
@@ -136,6 +141,7 @@ const CampaignForm = () => {
           </p>
         )}
       </form>
+    </div>
     </div>
   );
 };

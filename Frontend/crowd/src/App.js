@@ -33,7 +33,7 @@ function App() {
           
 
           {/* Route for Beneficiary Page */}
-          <Route path="/beneficiaries" element={<BeneficiaryPage />} /> 
+          <Route path="/beneficiaries/:campaignId" element={<BeneficiaryPage />} /> 
           <Route path="/donate" element={<DonationPage />} />
 
           {/* Route for Admin Dashboard */}

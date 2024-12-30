@@ -1,9 +1,13 @@
 import React from 'react';
 import './AboutPage.css'; // Import the new CSS
+import Navbar from './navbar';
 
 const AboutPage = () => {
   return (
+    <div>
+    <Navbar />
     <div className="about-page">
+      
       <h1>About Us</h1>
       <p>
         Welcome to our platform! We are committed to helping users achieve their goals
@@ -41,6 +45,7 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };

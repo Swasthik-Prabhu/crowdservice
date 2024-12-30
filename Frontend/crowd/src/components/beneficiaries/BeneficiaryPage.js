@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom'; // Import useParams to get campaign_id from the URL
 import axios from 'axios';
 import './BeneficiaryPage.css'; // Optional CSS file for styling
+// import { Navbar } from 'react-bootstrap';
+import Navbar from '../../pages/navbar';
 
 const BeneficiaryPage = () => {
+  const { campaignId } = useParams(); // Get the campaign_id from the route parameter
+
   const [form, setForm] = useState({
     name: '',
     contact: '',
     address: '',
-    campaign_id: '',
+    campaign_id: campaignId || '', // Prepopulate with campaign_id from the URL
   });
 
   // Handle form field changes
@@ -23,19 +28,22 @@ const BeneficiaryPage = () => {
       const response = await axios.post('http://127.0.0.1:8000/createbeneficiaries', form);
       alert('Beneficiary created successfully!');
 
-      // Reset form after successful submission
+      // Reset form after successful submission, but keep campaign_id
       setForm({
         name: '',
         contact: '',
         address: '',
-        campaign_id: '',
+        campaign_id: campaignId || '',
       });
     } catch (err) {
       console.error('Error submitting form:', err.message);
+      alert('Error creating beneficiary: ' + (err.response?.data?.detail || err.message));
     }
   };
 
   return (
+    <div>
+      <Navbar/>
     <div className="beneficiary-page-container">
       <h2>Create Beneficiary</h2>
 
@@ -77,14 +85,14 @@ const BeneficiaryPage = () => {
             type="number"
             name="campaign_id"
             value={form.campaign_id}
-            onChange={handleChange}
-            required
+            readOnly // Make the field non-editable
           />
         </div>
         <button type="submit" className="submit-button">
           Add Beneficiary
         </button>
       </form>
+    </div>
     </div>
   );
 };

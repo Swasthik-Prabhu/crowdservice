@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './profile.css';
+import Navbar from './navbar';
 
 
 // const handleDonateClick = () => {
@@ -10,6 +11,8 @@ import './profile.css';
 const Profile = () => {
   const navigate = useNavigate();
   return (
+    <div>
+      <Navbar/>
     <div className="profile-container">
       <div className="profile-header">
         <h1>User Profile</h1>
@@ -35,6 +38,7 @@ const Profile = () => {
           Logout
         </button>
       </div>
+    </div>
     </div>
   );
 };

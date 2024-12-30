@@ -22,6 +22,10 @@ class showcampaigns(BaseModel):
     end_date : date
     creator_id : int
 
+class CampaignResponse(BaseModel):
+    id: int
+
+
 class updatecampaigns(BaseModel):
     
     title : str
