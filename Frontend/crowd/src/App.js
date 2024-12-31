@@ -12,6 +12,8 @@ import DonationPage from './components/donations/DonationPage'; // Import Donati
 import AdminDashboard from './pages/AdminDashboard';
 import AdminCampaignForm from './components/Admincampaign/CampaignForm';
 import AdminReportList from './components/Adminreports/Report';
+import Homepage from './pages/HomePage';
+import Footer from './pages/Footer';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
 
           {/* Route for Donor Dashboard */}
           <Route path="/donor-dashboard" element={<DonorDashboard />} />  
+          <Route path = "/Homepage" element={<Homepage />} />
+          <Route path = "/footer" element={<Footer />} />
           
 
           {/* Route for Beneficiary Page */}

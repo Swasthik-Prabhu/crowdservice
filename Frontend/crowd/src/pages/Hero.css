@@ -1,0 +1,121 @@
+/* frontend/src/styles/Hero.css */
+.hero-section {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden; /* Ensures no extra content is visible when the hero section fades */
+}
+
+.hero-left,
+.hero-right {
+  flex: 1;
+  height: 100%;
+}
+
+.hero-left {
+  background-color: #ffd700; /* Yellow background */
+}
+
+.hero-right {
+  background-color: #ffffff; /* White background */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10; /* Ensure it's above the background */
+}
+
+.hero-title {
+  font-size: 6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.text-pablo {
+  color: black;
+  display: block;
+  padding-right: 230px;
+  font-size: 60px;
+}
+
+.text-picasso {
+  color: transparent;
+  display: inline-block;
+  background-image: var(--pattern);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-position: center;
+}
+
+.hero-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Image Gallery */
+.image-gallery {
+  margin-top: 0; /* Pull the gallery closer to the hero section */
+  padding: 20px;
+  z-index: 10;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.art-image {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.art-image:hover {
+  transform: scale(1.1);
+}
+
+/* Staggered Image Layout */
+.image-container img:nth-child(1) {
+  transform: translateY(10px);
+}
+
+.image-container img:nth-child(2) {
+  transform: translateY(-10px);
+}
+
+.image-container img:nth-child(3) {
+  transform: translateY(0);
+}
+
+.image-container img:nth-child(4) {
+  transform: translateY(-10px);
+}
+
+.image-container img:nth-child(5) {
+  transform: translateY(10px);
+}

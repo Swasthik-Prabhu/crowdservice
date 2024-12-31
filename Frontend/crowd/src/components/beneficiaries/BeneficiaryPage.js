@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams to get campaign_id from the URL
+import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
 import axios from 'axios';
-import './BeneficiaryPage.css'; // Optional CSS file for styling
-// import { Navbar } from 'react-bootstrap';
+import './BeneficiaryPage.css';
 import Navbar from '../../pages/navbar';
 
 const BeneficiaryPage = () => {
+  const navigate = useNavigate(); // Correctly call useNavigate inside the component
   const { campaignId } = useParams(); // Get the campaign_id from the route parameter
 
   const [form, setForm] = useState({
@@ -25,7 +25,7 @@ const BeneficiaryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/createbeneficiaries', form);
+      await axios.post('http://127.0.0.1:8000/createbeneficiaries', form);
       alert('Beneficiary created successfully!');
 
       // Reset form after successful submission, but keep campaign_id
@@ -35,6 +35,9 @@ const BeneficiaryPage = () => {
         address: '',
         campaign_id: campaignId || '',
       });
+
+      // Navigate to donor-dashboard
+      navigate('/donor-dashboard');
     } catch (err) {
       console.error('Error submitting form:', err.message);
       alert('Error creating beneficiary: ' + (err.response?.data?.detail || err.message));
@@ -43,56 +46,56 @@ const BeneficiaryPage = () => {
 
   return (
     <div>
-      <Navbar/>
-    <div className="beneficiary-page-container">
-      <h2>Create Beneficiary</h2>
+      <Navbar />
+      <div className="beneficiary-page-container">
+        <h2>Create Beneficiary</h2>
 
-      {/* Form Section */}
-      <form onSubmit={handleSubmit} className="beneficiary-form">
-        <div className="form-group">
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Contact:</label>
-          <input
-            type="number"
-            name="contact"
-            value={form.contact}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Address:</label>
-          <input
-            type="text"
-            name="address"
-            value={form.address}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Campaign ID:</label>
-          <input
-            type="number"
-            name="campaign_id"
-            value={form.campaign_id}
-            readOnly // Make the field non-editable
-          />
-        </div>
-        <button type="submit" className="submit-button">
-          Add Beneficiary
-        </button>
-      </form>
-    </div>
+        {/* Form Section */}
+        <form onSubmit={handleSubmit} className="beneficiary-form">
+          <div className="form-group">
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Contact:</label>
+            <input
+              type="number"
+              name="contact"
+              value={form.contact}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Address:</label>
+            <input
+              type="text"
+              name="address"
+              value={form.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Campaign ID:</label>
+            <input
+              type="number"
+              name="campaign_id"
+              value={form.campaign_id}
+              readOnly // Make the field non-editable
+            />
+          </div>
+          <button type="submit" className="submit-button">
+            Add Beneficiary
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

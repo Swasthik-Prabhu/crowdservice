@@ -18,7 +18,7 @@ const CampaignForm = () => {
     campaign_id: null,
   });
 
-  const [campaignId, setCampaignId] = useState(null);
+  const [campaignId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
