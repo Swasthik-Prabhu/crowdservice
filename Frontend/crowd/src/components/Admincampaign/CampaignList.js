@@ -21,15 +21,15 @@ const AdminCampaignList = () => {
     navigate('/update-campaign', { state: { campaign } }); // Pass entire campaign object via state
   };
 
-  const handleDeleteClick = async (campaign_id) => {
-    try {
-      await axios.delete(`http://127.0.0.1:8000/campaigns/${campaign_id}`);
-      alert('Campaign deleted successfully!');
-      setCampaigns(campaigns.filter(campaign => campaign.camp_id !== campaign_id));
-    } catch (error) {
-      alert('Error deleting campaign: ' + (error.response?.data?.detail || error.message));
-    }
-  };
+  // const handleDeleteClick = async (campaign_id) => {
+  //   try {
+  //     await axios.delete(`http://127.0.0.1:8000/campaigns/${campaign_id}`);
+  //     alert('Campaign deleted successfully!');
+  //     setCampaigns(campaigns.filter(campaign => campaign.camp_id !== campaign_id));
+  //   } catch (error) {
+  //     alert('Error deleting campaign: ' + (error.response?.data?.detail || error.message));
+  //   }
+  // };
 
   return (
     <div>

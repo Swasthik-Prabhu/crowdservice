@@ -50,12 +50,8 @@ const HomePage = () => {
           </h1>
           <button
             className="hero-button"
-<<<<<<< HEAD
-            aria-label="See more details about Crowd Funding"
-=======
             aria-label="See more details about Pablo Picasso"
             onClick={handleSeeDetailsClick} // Add click handler
->>>>>>> 6d672ffc42947ca537f23cb907736d0f6aa790d0
           >
             See Details
           </button>
