@@ -21,8 +21,9 @@ function DonorDashboard() {
         {/* Display the CampaignList component */}
         <CampaignList />
         
-        <Footer/>
+        
       </Container>
+      <Footer/>
     </div>
   );
 }

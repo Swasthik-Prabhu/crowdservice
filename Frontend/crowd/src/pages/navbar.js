@@ -1,17 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import logo from './logo.png'; // Ensure you have a logo image file in the appropriate path.
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
         <Link to="/" className="brand-link">
+          <img src={logo} alt="Logo" className="logo" />
           CrowdFunding Platform
         </Link>
       </div>
+      <input type="checkbox" id="toggle" className="navbar-toggle" />
+      <label htmlFor="toggle" className="navbar-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
       <ul className="navbar-menu">
-      <li className="navbar-item">
+        <li className="navbar-item">
           <Link to="/donor-dashboard" className="navbar-link">
             Home
           </Link>
@@ -31,7 +39,6 @@ function Navbar() {
             Create Campaign
           </Link>
         </li>
-        
         <li className="navbar-item">
           <Link to="/contact-us" className="navbar-link">
             Contact Us

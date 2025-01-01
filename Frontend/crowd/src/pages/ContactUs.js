@@ -15,9 +15,9 @@ const ContactUs = () => {
       <div className="contact-info">
         <h3>Our Contact Information:</h3>
         <ul>
-          <li><strong>Phone:</strong> (123) 456-7890</li>
-          <li><strong>Email:</strong> contact@company.com</li>
-          <li><strong>Address:</strong> 1234 Company St., City, Country</li>
+          <li><strong>Phone:</strong> (91) 9449011136</li>
+          <li><strong>Email:</strong> support@crowdfunding.com</li>
+          <li><strong>Address:</strong> SCEM Mangalore, Karnataka</li>
         </ul>
       </div>
 

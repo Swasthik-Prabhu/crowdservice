@@ -22,6 +22,14 @@ const HomePage = () => {
     };
   }, []);
 
+  // Scroll to campaigns section
+  const handleSeeDetailsClick = () => {
+    const campaignsSection = document.getElementById("campaigns-section");
+    if (campaignsSection) {
+      campaignsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -42,7 +50,12 @@ const HomePage = () => {
           </h1>
           <button
             className="hero-button"
+<<<<<<< HEAD
             aria-label="See more details about Crowd Funding"
+=======
+            aria-label="See more details about Pablo Picasso"
+            onClick={handleSeeDetailsClick} // Add click handler
+>>>>>>> 6d672ffc42947ca537f23cb907736d0f6aa790d0
           >
             See Details
           </button>
@@ -50,7 +63,7 @@ const HomePage = () => {
       </div>
 
       {/* Image Gallery Section */}
-      <section className="image-gallery">
+      <section id="campaigns-section" className="image-gallery">
         <div className="image-container">
           <img src="https://www.investopedia.com/thmb/-9BiBSIHnpAWSt3tSULOy0XCmnI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crowdfunding.asp-final-631f299b9cdb408cb08288b305f78440.png" alt="Artwork 1" className="art-image" />
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIL9AUpLywIC-xbXBWeAGlWS5tcjiqOHql1g&s" alt="Artwork 2" className="art-image" />
@@ -64,5 +77,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
