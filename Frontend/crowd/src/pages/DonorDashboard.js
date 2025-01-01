@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Navbar from './navbar'; // Import the Navbar component
-import CampaignList from '../components/Campaigns/CampaignList'; // Import CampaignList component
+// import CampaignList from '../components/Campaigns/CampaignList'; // Import CampaignList component
 import HomePage from './HomePage';
 import Footer from './Footer';
 
@@ -19,7 +19,7 @@ function DonorDashboard() {
         <HomePage/>
         
         {/* Display the CampaignList component */}
-        <CampaignList />
+        {/* <CampaignList /> */}
         
         
       </Container>

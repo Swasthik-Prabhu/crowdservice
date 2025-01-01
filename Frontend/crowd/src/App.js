@@ -14,6 +14,8 @@ import AdminCampaignForm from './components/Admincampaign/CampaignForm';
 import AdminReportList from './components/Adminreports/Report';
 import Homepage from './pages/HomePage';
 import Footer from './pages/Footer';
+import CampaignPage from './components/Campaigns/CampaignPage';
+import CampaignDetails from './components/Campaigns/CampaignDetails';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path = "/campaignpage" element={<CampaignPage />} />
+          <Route path="/campaign/:campaignId" element={<CampaignDetails />} />
 
           {/* Route for Donor Dashboard */}
           <Route path="/donor-dashboard" element={<DonorDashboard />} />  
