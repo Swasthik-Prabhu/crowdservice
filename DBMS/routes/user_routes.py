@@ -65,7 +65,7 @@ async def login_user(user: schemas.LoginUser, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Invalid email or password")
     
     # Return success response
-    return {"message": "Login successful", "user_id": db_user.user_id, "role": db_user.role}
+    return {"message": "Login successful", "user_id": db_user.user_id, "role": db_user.role,"email": db_user.email, "name": db_user.name,"contact": db_user.contact}
 
 @router.get("/users/max-id/")
 def get_max_user_id(db: Session = Depends(get_db)):

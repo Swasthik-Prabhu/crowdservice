@@ -16,14 +16,14 @@ const DonationPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Populate campaign_id from location state
+  // Populate campaign_id from location state and user_id from localStorage
   useEffect(() => {
-    if (location.state?.campaign_id) {
-      setFormData((prevData) => ({
-        ...prevData,
-        campaign_id: location.state.campaign_id,
-      }));
-    }
+    const storedUser = JSON.parse(localStorage.getItem('userDetails'));
+    setFormData((prevData) => ({
+      ...prevData,
+      campaign_id: location.state?.campaign_id || "",
+      user_id: storedUser?.user_id || "", // Set user_id from local storage
+    }));
   }, [location.state]);
 
   const handleInputChange = (e) => {
@@ -95,7 +95,6 @@ const DonationPage = () => {
           value={formData.campaign_id}
           onChange={handleInputChange}
           disabled // Make this field read-only since it's auto-filled
-          
         />
 
         <label htmlFor="user_id">User ID:</label>
@@ -105,7 +104,7 @@ const DonationPage = () => {
           name="user_id"
           value={formData.user_id}
           onChange={handleInputChange}
-          required
+          disabled // Make this field read-only since it's auto-filled
         />
 
         <div className="form-buttons">
