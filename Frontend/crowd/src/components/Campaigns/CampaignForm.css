@@ -1,0 +1,193 @@
+body {
+    background: linear-gradient(45deg, rgba(26, 35, 126, 0.05) 0%, rgba(74, 20, 140, 0.05) 100%),
+                url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M0 0h20L0 20z"/%3E%3C/g%3E%3C/svg%3E');
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .campaign-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .campaign-form-container h2 {
+    color: #1a237e;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .campaign-form-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #1a237e, #4a148c);
+    border-radius: 2px;
+  }
+  
+  .campaign-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    color: #1a237e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  
+  .form-group input {
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #4a148c;
+    box-shadow: 0 0 0 4px rgba(74, 20, 140, 0.1);
+    background: white;
+  }
+  
+  .form-group input:hover {
+    border-color: #1a237e;
+  }
+  
+  .form-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1a237e, #4a148c);
+    transition: width 0.3s ease;
+  }
+  
+  .form-group:focus-within::after {
+    width: 100%;
+  }
+  
+  .submit-button {
+    background: linear-gradient(135deg, #1a237e, #4a148c);
+    color: white;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(74, 20, 140, 0.3);
+  }
+  
+  .submit-button:active {
+    transform: translateY(-1px);
+  }
+  
+  .submit-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.6s ease;
+  }
+  
+  .submit-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .success-message {
+    color: #2e7d32;
+    text-align: center;
+    padding: 1.2rem;
+    background: #e8f5e9;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-left: 4px solid #2e7d32;
+    animation: slideIn 0.5s ease;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Input type date styling */
+  input[type="date"] {
+    appearance: none;
+    padding-right: 2rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a237e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E") no-repeat right 0.8rem center/1.2em;
+  }
+  
+  /* Number input styling */
+  input[type="number"] {
+    appearance: textfield;
+  }
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+  }
+  
+  @media (max-width: 768px) {
+    .campaign-form-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .campaign-form-container h2 {
+      font-size: 1.8rem;
+    }
+    
+    .submit-button {
+      padding: 1rem;
+    }
+  }
+
+  
