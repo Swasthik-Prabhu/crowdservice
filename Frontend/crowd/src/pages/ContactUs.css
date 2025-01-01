@@ -1,107 +1,176 @@
-/* ContactUs.css */
+.report-page-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+}
 
-/* Container for the entire Contact Us page */
-.contact-us-container {
-    padding: 2rem;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    min-height: 100vh;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .contact-header {
-    text-align: center;
-    margin-bottom: 2rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .contact-header h1 {
-    font-size: 2.5rem;
-    color: #333;
+}
+
+.report-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.report-header h1 {
+  color: #2c3e50;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.report-header p {
+  color: #6c757d;
+  font-size: 1.1em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.report-form {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  outline: none;
+}
+
+.form-group textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.error-message,
+.success-message {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.error-message {
+  background-color: #fff5f5;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+}
+
+.success-message {
+  background-color: #f0fff4;
+  color: #2f855a;
+  border: 1px solid #9ae6b4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .contact-header p {
-    font-size: 1.1rem;
-    color: #777;
+  to {
+    opacity: 1;
   }
-  
-  .contact-info {
-    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .report-page-container {
+    margin: 20px;
+    padding: 15px;
   }
-  
-  .contact-info h3 {
-    font-size: 1.5rem;
-    color: #333;
+
+  .report-header h1 {
+    font-size: 2em;
   }
-  
-  .contact-info ul {
-    list-style-type: none;
-    padding-left: 0;
+
+  .report-header p {
+    font-size: 1em;
   }
-  
-  .contact-info ul li {
-    font-size: 1.1rem;
-    color: #555;
-    margin: 0.5rem 0;
+
+  .form-group label {
+    font-size: 1em;
   }
-  
-  .contact-form-section {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .contact-form-section h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .contact-form .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .contact-form .form-group label {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  .contact-form .form-group input,
-  .contact-form .form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .contact-form .form-group textarea {
-    height: 150px;
-    resize: none;
-  }
-  
+
   .submit-btn {
-    background-color: #00aaff;
-    color: white;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin: 1rem 0;
+    padding: 12px;
   }
-  
-  .submit-btn:hover {
-    background-color: #0088cc;
-  }
-  
-  .submit-btn:active {
-    background-color: #006699;
-  }
-  
+}
+
+/* Custom styles for date input */
+input[type="date"] {
+  color: #4a5568;
+  background-color: #f7fafc;
+  cursor: not-allowed;
+}
+
+input[type="date"]:disabled {
+  background-color: #edf2f7;
+  border-color: #e2e8f0;
+}
+
+/* Focus styles for better accessibility */
+*:focus-visible {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
