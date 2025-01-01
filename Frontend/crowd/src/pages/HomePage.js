@@ -35,14 +35,14 @@ const HomePage = () => {
         {/* Center Content */}
         <div className="hero-content" style={{ opacity: opacity }}>
           <h1 className="hero-title">
-            <span className="text-pablo">Pablo</span>
+            <span className="text-pablo">CROWD</span>
             <span className="text-picasso">
-              PICASSO
+              FUNDING
             </span>
           </h1>
           <button
             className="hero-button"
-            aria-label="See more details about Pablo Picasso"
+            aria-label="See more details about Crowd Funding"
           >
             See Details
           </button>
