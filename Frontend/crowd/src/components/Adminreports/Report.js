@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './report.css'; // You can style this just like the CampaignList
 import AdminNavbar from '../../pages/Adminnavbar';
@@ -7,7 +7,7 @@ import AdminNavbar from '../../pages/Adminnavbar';
 const AdminReportList = () => {
   const [reports, setReports] = useState([]);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     // Fetching reports data
@@ -19,19 +19,19 @@ const AdminReportList = () => {
       });
   }, []);
 
-  const handleUpdateClick = (report) => {
-    navigate('/update-report', { state: { report } }); // Navigate with the report data
-  };
+  // const handleUpdateClick = (report) => {
+  //   navigate('/update-report', { state: { report } }); // Navigate with the report data
+  // };
 
-  const handleDeleteClick = async (report_id) => {
-    try {
-      await axios.delete(`http://127.0.0.1:8000/reports/${report_id}`);
-      alert('Report deleted successfully!');
-      setReports(reports.filter(report => report.report_id !== report_id));
-    } catch (error) {
-      alert('Error deleting report: ' + (error.response?.data?.detail || error.message));
-    }
-  };
+  // const handleDeleteClick = async (report_id) => {
+  //   try {
+  //     await axios.delete(`http://127.0.0.1:8000/reports/${report_id}`);
+  //     alert('Report deleted successfully!');
+  //     setReports(reports.filter(report => report.report_id !== report_id));
+  //   } catch (error) {
+  //     alert('Error deleting report: ' + (error.response?.data?.detail || error.message));
+  //   }
+  // };
 
   return (
     <div>
