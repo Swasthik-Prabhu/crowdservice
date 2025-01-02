@@ -30,20 +30,21 @@ function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
+          <Link to="/campaignpage" className="navbar-link">
+            Campaigns
+          </Link>
+        </li>
+        <li className="navbar-item">
           <Link to="/profile" className="navbar-link">
             Profile
           </Link>
         </li>
-        <li className="navbar-item">
-          <Link to="/create-campaign" className="navbar-link">
-            Create Campaign
-          </Link>
-        </li>
-        <li className="navbar-item">
+        
+        {/* <li className="navbar-item">
           <Link to="/contact-us" className="navbar-link">
             Contact Us
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

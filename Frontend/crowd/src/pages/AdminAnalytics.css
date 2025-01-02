@@ -1,0 +1,67 @@
+.analytics-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .analytics-cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .card h2 {
+    margin: 0;
+    color: #666;
+  }
+  
+  .card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .highlighted-section {
+    margin: 20px 0;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .analytics-charts {
+    margin: 20px 0;
+  }
+  
+  .additional-insights {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  p {
+    color: #333;
+  }
+  
+  .loading, .error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  

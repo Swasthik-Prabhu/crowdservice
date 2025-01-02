@@ -1,0 +1,322 @@
+/* Root Variables */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --background-light: #f8f9fa;
+    --text-dark: #1a1a1a;
+    --text-muted: #6b7280;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Base Styles with Background Pattern */
+  body {
+    background: 
+      radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 0% 100%, rgba(79, 70, 229, 0.08) 0%, transparent 25%),
+      var(--background-light);
+    min-height: 100vh;
+  }
+  
+  .campaign-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 80px);
+  }
+ .your-campaigns-button{
+  background-color: #6366f1;
+  color: white;
+ }
+  
+  /* Enhanced Header Styles */
+  .campaign-page h1 {
+    color: var(--text-dark);
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color), #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  
+  .campaign-page h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    margin: 15px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Enhanced Create Campaign Button */
+  .create-campaign-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .create-campaign-button {
+    background: linear-gradient(135deg, var(--primary-color), #6366f1);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+  
+  .create-campaign-button::before {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  
+  .create-campaign-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+  }
+  
+  /* Enhanced Search Bar */
+  .search-bar {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    align-items: end;
+    position: relative;
+    border: 1px solid rgba(79, 70, 229, 0.1);
+  }
+  
+  .search-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-field-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .search-field-group input {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+    background: var(--background-light);
+  }
+  
+  .search-field-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    background: white;
+  }
+  
+  .search-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    height: 48px;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .search-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.5s;
+  }
+  
+  .search-button:hover::after {
+    left: 100%;
+  }
+  
+  /* Enhanced Campaign Cards */
+  .campaigns-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+  }
+  
+  .campaign-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .campaign-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #6366f1);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+  
+  .campaign-card:hover::before {
+    opacity: 1;
+  }
+  
+  .campaign-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .campaign-card h3 {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  
+  .campaign-card p {
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  /* Progress Bar for Campaign Cards */
+  .campaign-card .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  
+  .campaign-card .progress-bar .progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), #6366f1);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+  }
+  
+  /* Enhanced Responsive Design */
+  @media (max-width: 768px) {
+    .campaign-page {
+      padding: 20px;
+      margin: 15px;
+    }
+  
+    .campaign-page h1 {
+      font-size: 2.2rem;
+    }
+  
+    .search-bar {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+  
+    .campaign-card {
+      padding: 25px;
+    }
+  }
+  
+  /* Loading Skeleton Animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+  
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #f8f8f8 50%,
+      #f0f0f0 75%
+    );
+    background-size: 936px;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background-light);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 6px;
+    border: 3px solid var(--background-light);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+  }
+  
+  /* Focus Styles for Accessibility */
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
+  }
+
+
+  

@@ -14,6 +14,11 @@ import AdminCampaignForm from './components/Admincampaign/CampaignForm';
 import AdminReportList from './components/Adminreports/Report';
 import Homepage from './pages/HomePage';
 import Footer from './pages/Footer';
+import CampaignPage from './components/Campaigns/CampaignPage';
+import CampaignDetails from './components/Campaigns/CampaignDetails';
+
+import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Import YourCampaignsPage
+import AdminAnalytics from './pages/AdminAnalytics'; // Import AdminAnalytics
 
 function App() {
   return (
@@ -30,6 +35,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path = "/campaignpage" element={<CampaignPage />} />
+          <Route path="/campaign/:campaignId" element={<CampaignDetails />} />
+          <Route path="/your-campaigns/:userId" element={<YourCampaignsPage />} />
 
           {/* Route for Donor Dashboard */}
           <Route path="/donor-dashboard" element={<DonorDashboard />} />  
@@ -45,6 +53,7 @@ function App() {
           <Route path = "/admin-panel" element={<AdminDashboard/>} />
           <Route path = "/update-campaign" element={<AdminCampaignForm/>} />
           <Route path = "/report" element={<AdminReportList/>} />
+          <Route path = "/admin-analytics" element={<AdminAnalytics/>} />
 
         </Routes>
       </div>

@@ -1,125 +1,195 @@
-/* signup.css */
-
-/* Basic resets */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Base styles and animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* Container for the signup form with gradient background */
+/* Container styles */
 .signup-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Full viewport height */
-  background: linear-gradient(135deg, #4a90e2, #a18585, #83828b); /* Gradient background */
-  padding: 20px;
+  padding: 2rem;
+  background: #f4f4f9;
+  overflow: hidden;
 }
 
-/* Headings styles */
+/* Animated background elements */
+.signup-container::before,
+.signup-container::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  animation: float 7s infinite ease-in-out;
+}
+
+.signup-container::before {
+  top: -150px;
+  right: -150px;
+  animation-delay: -3s;
+}
+
+.signup-container::after {
+  bottom: -150px;
+  left: -150px;
+  width: 250px;
+  height: 250px;
+  animation-delay: -5s;
+}
+
+/* Welcome heading */
 .signup-container h1 {
-  font-size: 2.5em;
-  color: #333; /* Dark text color */
-  margin-bottom: 10px;
+  color: #333;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
+/* Sign up heading */
 .signup-container h2 {
-  font-size: 1.5em;
-  color: #555; /* Slightly lighter text color */
-  margin-bottom: 20px;
+  color: #555;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 /* Form styles */
 .signup-container form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
   width: 100%;
-  max-width: 400px; /* Max width for the form */
-  background: white; /* White background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 20px; /* Inner padding */
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
 }
 
-/* Input fields styles */
+.signup-container form:hover {
+  transform: translateY(-5px);
+}
+
+/* Input fields */
 .signup-container input {
-  width: 100%; /* Full width */
-  padding: 10px; /* Inner padding */
-  margin-bottom: 15px; /* Space between fields */
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1em; /* Font size */
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
-/* Input fields focus effect */
 .signup-container input:focus {
-  border-color: #007bff; /* Blue border on focus */
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow */
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Button styles */
+/* Submit button */
 .signup-container button {
-  width: 100%; /* Full width */
-  padding: 10px; /* Inner padding */
-  background-color: #007bff; /* Blue background */
-  color: white; /* White text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1.1em; /* Slightly larger font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition */
+  width: 100%;
+  padding: 12px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Button hover effect */
 .signup-container button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background: #4f52d6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
 }
 
-/* Error message styles */
+/* Error message */
 .error {
-  color: red; /* Red text color for error messages */
-  margin-top: 10px; /* Space above error message */
+  background: rgba(255, 99, 99, 0.1);
+  color: #ff6363;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  text-align: center;
 }
 
-/* Sign-in option styles */
+/* Sign in option */
 .signin-option {
-  margin-top: 20px; /* Space above the sign-in option */
-  font-size: 1em; /* Font size */
-  color: #555; /* Slightly lighter text color */
-  text-align: center; /* Center align text */
+  margin-top: 1.5rem;
+  color: #555;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .signin-link {
-  color: #007bff; /* Blue text color for link */
-  cursor: pointer; /* Pointer cursor on hover */
-  text-decoration: underline; /* Underline for link */
+  color: #6366f1;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .signin-link:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #4f52d6;
+  text-decoration: underline;
 }
 
-/* Responsive Styles */
-@media (max-width: 600px) {
+/* Responsive design */
+@media (max-width: 768px) {
+  .signup-container {
+      padding: 1rem;
+  }
+
   .signup-container h1 {
-    font-size: 2em; /* Smaller font size on small screens */
+      font-size: 2rem;
   }
 
   .signup-container h2 {
-    font-size: 1.2em; /* Smaller font size on small screens */
+      font-size: 1.75rem;
   }
 
   .signup-container form {
-    padding: 15px; /* Reduced padding on small screens */
+      padding: 1.5rem;
   }
 
   .signup-container input {
-    padding: 8px; /* Reduced padding on input */
+      padding: 10px;
+      margin-bottom: 1rem;
   }
+}
 
-  .signup-container button {
-    padding: 8px; /* Reduced padding on button */
-    font-size: 1em; /* Smaller font size on button */
-  }
+/* Loading animation for button */
+.signup-container button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Custom focus styles */
+.signup-container input:focus::placeholder {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* Field validation visual feedback */
+.signup-container input:valid {
+  border-color: #7bed9f;
+}
+
+.signup-container input:invalid:not(:placeholder-shown) {
+  border-color: #ff6363;
 }

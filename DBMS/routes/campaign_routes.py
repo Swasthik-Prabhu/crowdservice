@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from models import Campaign
 from database import get_db
-from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse
+from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse, Campaignuser
 
 router = APIRouter(
     tags=['Campaigns']
@@ -68,3 +68,12 @@ def delete_campaign(campaign_id: int, db: Session = Depends(get_db)):
     db.delete(campaign)
     db.commit()
     return {"detail": "Campaign deleted successfully"}
+
+
+@router.get("/campaigns/creator/{creator_id}", response_model=List[Campaignuser])
+def get_campaigns_by_creator(creator_id: int, db: Session = Depends(get_db)):
+    campaigns = db.query(Campaign).filter(Campaign.creator_id == creator_id).all()
+    if not campaigns:
+        raise HTTPException(status_code=404, detail="No campaigns found for the specified creator")
+    return campaigns
+
