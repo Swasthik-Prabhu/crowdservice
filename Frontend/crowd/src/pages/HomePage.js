@@ -43,9 +43,9 @@ const HomePage = () => {
         {/* Center Content */}
         <div className="hero-content" style={{ opacity: opacity }}>
           <h1 className="hero-title">
-            <span className="text-pablo">CROWD</span>
+            <span className="text-pablo">FUNDRAISING</span>
             <span className="text-picasso">
-              FUNDING
+              PLATFORM
             </span>
           </h1>
           <button
