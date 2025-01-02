@@ -9,7 +9,7 @@ function Navbar() {
       <div className="navbar-brand">
         <Link to="/" className="brand-link">
           <img src={logo} alt="Logo" className="logo" />
-          CrowdFunding Platform
+          Fundraising Platform
         </Link>
       </div>
       <input type="checkbox" id="toggle" className="navbar-toggle" />
