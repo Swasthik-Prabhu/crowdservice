@@ -19,6 +19,7 @@ import CampaignDetails from './components/Campaigns/CampaignDetails';
 
 import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Import YourCampaignsPage
 import AdminAnalytics from './pages/AdminAnalytics'; // Import AdminAnalytics
+import MyDonationsPage from './components/Campaigns/MyDonationsPage';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           {/* Route for Beneficiary Page */}
           <Route path="/beneficiaries/:campaignId" element={<BeneficiaryPage />} /> 
           <Route path="/donate" element={<DonationPage />} />
+          <Route path="/your-donations/:userId" element={<MyDonationsPage />} />
 
           {/* Route for Admin Dashboard */}
           <Route path = "/admin-panel" element={<AdminDashboard/>} />

@@ -1,0 +1,69 @@
+/* MyDonationsPage.css */
+
+.my-donations-page {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa; 
+    min-height: calc(100vh - 80px); 
+  }
+  
+  .my-donations-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40; 
+  }
+  
+  .donations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .donation-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Add transition for box-shadow */
+  }
+  
+  /* Hover Effect: Scale Up and Enhanced Shadow */
+  .donation-card:hover {
+    transform: translateY(-3px) scale(1.02); /* Add scale for a subtle zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  }
+  
+  .donation-card h3 {
+    color: #28a745;
+    margin-bottom: 10px;
+    transition: color 0.3s ease; /* Add color transition */
+  }
+  
+  /* Change Heading Color on Hover */
+  .donation-card:hover h3 {
+    color: #218838; /* Darker green on hover */
+  }
+  
+  .donation-card p {
+    margin-bottom: 8px;
+    color: #495057; 
+  }
+  
+  /* Add a subtle loading animation if needed */
+  .my-donations-page .loading { 
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 4px solid #f3f3f3; /* Light gray */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

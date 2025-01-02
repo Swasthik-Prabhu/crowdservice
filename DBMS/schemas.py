@@ -67,6 +67,15 @@ class Donations(BaseModel):
     campaign_id : int   # foreign key
     user_id: int   # foreign key added
 
+
+class donationuser(BaseModel):
+    donation_id : int
+    amount : float
+    donation_date : date
+    transaction_id : int
+    campaign_id : int   # foreign key
+    user_id: int   # foreign key added
+
 # Users Schema
 class Users(BaseModel):
     #user_id : int

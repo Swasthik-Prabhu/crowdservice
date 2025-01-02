@@ -4,7 +4,7 @@ import models
 from database import engine, get_db
 from sqlalchemy.orm import Session, sessionmaker
 from typing import List
-from schemas import Donations as DonationsSchema, Users
+from schemas import Donations as DonationsSchema, Users, donationuser
 from models import Base, Donations, Users
 
 
@@ -76,5 +76,12 @@ def delete_donation(donation_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"detail": "Donation deleted successfully"}
 
+
+@router.get("/donations/creator/{creator_id}", response_model=List[donationuser])
+def get_donations_by_creator(creator_id: int, db: Session = Depends(get_db)):
+    donations = db.query(Donations).filter(Donations.user_id == creator_id).all()
+    if not donations:
+        raise HTTPException(status_code=404, detail="No donations found for the specified creator")
+    return donations
 
 
