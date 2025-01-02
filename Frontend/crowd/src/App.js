@@ -18,6 +18,7 @@ import CampaignPage from './components/Campaigns/CampaignPage';
 import CampaignDetails from './components/Campaigns/CampaignDetails';
 
 import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Import YourCampaignsPage
+import AdminAnalytics from './pages/AdminAnalytics'; // Import AdminAnalytics
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path = "/admin-panel" element={<AdminDashboard/>} />
           <Route path = "/update-campaign" element={<AdminCampaignForm/>} />
           <Route path = "/report" element={<AdminReportList/>} />
+          <Route path = "/admin-analytics" element={<AdminAnalytics/>} />
 
         </Routes>
       </div>

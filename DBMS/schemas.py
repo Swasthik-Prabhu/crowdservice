@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt, Field
 from datetime import date
 
 # Campaign Schema
@@ -6,8 +6,8 @@ class Campaign(BaseModel):
     #camp_id : int 
     title : str
     cause : str
-    target_amount : float
-    raised_amount : float
+    target_amount : PositiveFloat
+    raised_amount : PositiveFloat
     start_date : date
     end_date : date
     creator_id : int  # foreign key
@@ -16,8 +16,8 @@ class showcampaigns(BaseModel):
     camp_id : int 
     title : str
     cause : str
-    target_amount : float
-    raised_amount : float
+    target_amount : PositiveFloat
+    raised_amount : PositiveFloat
     start_date : date
     end_date : date
     creator_id : int
@@ -30,8 +30,8 @@ class Campaignuser(BaseModel):
     camp_id : int 
     title : str
     cause : str
-    target_amount : float
-    raised_amount : float
+    target_amount : PositiveFloat
+    raised_amount : PositiveFloat
     start_date : date
     end_date : date
 
@@ -41,7 +41,7 @@ class updatecampaigns(BaseModel):
     
     title : str
     cause : str
-    target_amount : float
+    target_amount : PositiveFloat
     start_date : date
     end_date : date
     
@@ -51,7 +51,7 @@ class updatecampaigns(BaseModel):
 class Beneficiaries(BaseModel):
     # beneficiary_id : int
     name : str
-    contact : int
+    contact : PositiveInt
     address : str
     campaign_id : int  # foreign key
 
@@ -61,7 +61,7 @@ class Beneficiaries(BaseModel):
 # Donations Schema
 class Donations(BaseModel):
     # donation_id : int
-    amount : float
+    amount : PositiveFloat
     donation_date : date
     transaction_id : int
     campaign_id : int   # foreign key
@@ -73,14 +73,14 @@ class Users(BaseModel):
     name : str
     email : str
     password : str
-    contact : int
+    contact : PositiveInt
     role : str
 
 class ShowUser(BaseModel):
     user_id : int
     name : str
     email : str
-    contact : int
+    contact : PositiveFloat
 
 class LoginUser(BaseModel):
     email: str
