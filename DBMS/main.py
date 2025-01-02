@@ -11,13 +11,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes import campaign_routes, beneficiary_routes, donations_route, milestone_routes, user_routes, reports_route
 
 
-
+# http://localhost:3000
 # Initialize FastAPI app
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Adjust to your frontend URL
+    allow_origins=["*"],  # Adjust to your frontend URL
     allow_methods=["*"],
     allow_headers=["*"],
 )

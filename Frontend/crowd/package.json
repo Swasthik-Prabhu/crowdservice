@@ -53,5 +53,10 @@
     "lib": "lib"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  
+  "homepage": "https://your-domain.com" 
+  
+  
 }
+

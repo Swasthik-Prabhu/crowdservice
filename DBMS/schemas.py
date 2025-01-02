@@ -26,6 +26,17 @@ class CampaignResponse(BaseModel):
     id: int
 
 
+class Campaignuser(BaseModel):
+    camp_id : int 
+    title : str
+    cause : str
+    target_amount : float
+    raised_amount : float
+    start_date : date
+    end_date : date
+
+
+
 class updatecampaigns(BaseModel):
     
     title : str

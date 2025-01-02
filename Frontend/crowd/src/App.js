@@ -17,6 +17,8 @@ import Footer from './pages/Footer';
 import CampaignPage from './components/Campaigns/CampaignPage';
 import CampaignDetails from './components/Campaigns/CampaignDetails';
 
+import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Import YourCampaignsPage
+
 function App() {
   return (
     <Router>
@@ -34,6 +36,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path = "/campaignpage" element={<CampaignPage />} />
           <Route path="/campaign/:campaignId" element={<CampaignDetails />} />
+          <Route path="/your-campaigns/:userId" element={<YourCampaignsPage />} />
 
           {/* Route for Donor Dashboard */}
           <Route path="/donor-dashboard" element={<DonorDashboard />} />  

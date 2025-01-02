@@ -38,6 +38,10 @@ function SignIn() {
 
   return (
     <div className="signin-container">
+    <div className="decorative-shape shape1"></div>
+    <div className="decorative-shape shape2"></div>
+    <div className="decorative-shape shape3"></div>
+    <div className="decorative-shape shape4"></div>
       <h2>Sign In</h2>
       <form onSubmit={handleSignIn}>
         <input
