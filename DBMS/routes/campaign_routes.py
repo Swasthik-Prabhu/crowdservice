@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from typing import List
-from models import Campaign
+from models import Campaign, Donations, Users
 from database import get_db
-from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse, Campaignuser
+from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse, DonationResponse, userdonated, Campaignuser
+
 
 router = APIRouter(
     tags=['Campaigns']
@@ -70,6 +71,8 @@ def delete_campaign(campaign_id: int, db: Session = Depends(get_db)):
     return {"detail": "Campaign deleted successfully"}
 
 
+
+
 @router.get("/campaigns/creator/{creator_id}", response_model=List[Campaignuser])
 def get_campaigns_by_creator(creator_id: int, db: Session = Depends(get_db)):
     campaigns = db.query(Campaign).filter(Campaign.creator_id == creator_id).all()
@@ -77,3 +80,40 @@ def get_campaigns_by_creator(creator_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="No campaigns found for the specified creator")
     return campaigns
 
+@router.get("/donations/creator/{user_id}", response_model=List[DonationResponse])
+def get_user_donations(user_id: int, db: Session = Depends(get_db)):
+    donations = (
+        db.query(Donations)
+        .filter(Donations.user_id == user_id)
+        .options(joinedload(Donations.campaign))  # Eager load campaign details
+        .all()
+    )
+    if not donations:
+        raise HTTPException(status_code=404, detail="No donations found for the specified user")
+    return donations
+
+@router.get("/campaigns/{campaign_id}/donors", response_model=List[userdonated])
+def get_donors_by_campaign(campaign_id: int, db: Session = Depends(get_db)):
+    donations = (
+        db.query(Donations)
+        .options(joinedload(Donations.user))  # Ensure related user info is loaded
+        .filter(Donations.campaign_id == campaign_id)
+        .all()
+    )
+    if not donations:
+        raise HTTPException(status_code=404, detail="No donations found for the specified campaign")
+
+    donor_data = []
+    for donation in donations:
+        user = db.query(Users).filter(Users.user_id == donation.user_id).first()
+        
+        if user:
+            donor_data.append({
+                "user_id": user.user_id,
+                "name": user.name,
+                "email": user.email,
+                "contact": user.contact,
+                "donation_amount": donation.amount,
+            })
+    
+    return donor_data

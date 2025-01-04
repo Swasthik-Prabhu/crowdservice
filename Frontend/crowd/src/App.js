@@ -20,6 +20,7 @@ import CampaignDetails from './components/Campaigns/CampaignDetails';
 import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Import YourCampaignsPage
 import AdminAnalytics from './pages/AdminAnalytics'; // Import AdminAnalytics
 import MyDonationsPage from './components/Campaigns/MyDonationsPage';
+import AdminCampaignDetails from './components/Admincampaign/AdminCampaignDetails';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path = "/update-campaign" element={<AdminCampaignForm/>} />
           <Route path = "/report" element={<AdminReportList/>} />
           <Route path = "/admin-analytics" element={<AdminAnalytics/>} />
+          <Route path = "/campaign-details" element={<AdminCampaignDetails/>} />
 
         </Routes>
       </div>

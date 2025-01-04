@@ -234,7 +234,7 @@ const CampaignDetails = () => {
             Donate
           </button>
           <button onClick={handleReport} className="report-button">
-            Report
+            Issues
           </button>
         </div>
       </div>

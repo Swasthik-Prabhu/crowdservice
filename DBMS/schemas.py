@@ -26,6 +26,18 @@ class CampaignResponse(BaseModel):
     id: int
 
 
+class CampaignDetail(BaseModel):
+    camp_id: int
+    title: str
+
+class DonationResponse(BaseModel):
+    donation_id: int
+    amount: float
+    donation_date: date
+    # transaction_id: str
+    campaign: CampaignDetail  # Include campaign details
+
+
 class Campaignuser(BaseModel):
     camp_id : int 
     title : str
@@ -34,6 +46,7 @@ class Campaignuser(BaseModel):
     raised_amount : float
     start_date : date
     end_date : date
+
 
 
 
@@ -94,6 +107,15 @@ class ShowUser(BaseModel):
 class LoginUser(BaseModel):
     email: str
     password: str
+
+
+class userdonated(BaseModel):
+    user_id : int
+    name : str
+    email : str
+    contact : float
+    donation_amount: float
+
 
 
 

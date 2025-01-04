@@ -1,0 +1,119 @@
+.campaign-details-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-details-container h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.campaign-details-container h2 {
+    color: #34495e;
+    font-size: 1.8rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.campaign-details-container p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+}
+
+.donor-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.donor-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.donor-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donor-card h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.donor-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.donor-card strong {
+    color: #2c3e50;
+}
+
+.error {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Loading state styling */
+.campaign-details-container div:not([class]) {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .campaign-details-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .campaign-details-container h1 {
+        font-size: 2rem;
+    }
+
+    .campaign-details-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .donor-cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for loading state */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.campaign-details-container div:not([class]) {
+    animation: pulse 1.5s infinite ease-in-out;
+}
