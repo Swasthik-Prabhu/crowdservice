@@ -19,7 +19,7 @@ function AdminNavbar() {
          
         <li className="navbar-item">
           <Link to="/report" className="navbar-link">
-          Reports
+          Issues
           </Link>
           
         </li>

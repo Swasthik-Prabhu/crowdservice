@@ -37,12 +37,12 @@ const AdminReportList = () => {
     <div>
     <AdminNavbar/>
     <div>
-      <h1>Reports</h1>
+      <h1>Issues</h1>
       {error && <div className="error">{error}</div>}
       <div className="reports-list">
         {reports.map((report) => (
           <div key={report.report_id} className="report-card">
-            <h3>Report #{report.report_id}</h3>
+            <h3>Issues Id : {report.report_id}</h3>
             <p>Campaign ID: {report.campaign_id}</p>
             <p>Date: {new Date(report.report_date).toLocaleDateString()}</p>
             <p>Description: {report.description}</p>
