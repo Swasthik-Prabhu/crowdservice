@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link to="/" className="brand-link">
+        <Link to="/donor-dashboard" className="brand-link">
           <img src={logo} alt="Logo" className="logo" />
           Fundraising Platform
         </Link>

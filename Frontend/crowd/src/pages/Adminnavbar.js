@@ -6,7 +6,7 @@ function AdminNavbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link to="/" className="brand-link">
+        <Link to="/admin-panel" className="brand-link">
           Admin Panel 
         </Link>
       </div>

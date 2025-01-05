@@ -59,6 +59,19 @@ def admin_analytics(db: Session = Depends(get_db)):
         if not row:
             raise HTTPException(status_code=404, detail="No analytics data found")
 
+        # Query for campaign-wise donations for the chart
+        campaign_query = text("""
+        SELECT c.title, COALESCE(SUM(d.amount), 0) AS total_donations
+        FROM campaigns c
+        LEFT JOIN donations d ON c.camp_id = d.campaign_id
+        GROUP BY c.camp_id
+        ORDER BY c.title
+        """)
+        campaign_result = db.execute(campaign_query)
+        campaign_data = [
+            {"title": row[0], "total_donations": row[1]} for row in campaign_result
+        ]
+
         # Return analytics in a structured format
         return {
             "total_donations": row[0],
@@ -76,6 +89,7 @@ def admin_analytics(db: Session = Depends(get_db)):
             "total_reports": row[12],
             "max_donor": row[13] if row[13] else "No donors yet",
             "max_donation_amount": row[14],
+            "campaign_donations": campaign_data,  # Campaign-wise donations for chart
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred while fetching analytics: {str(e)}")
