@@ -4,8 +4,8 @@ import models
 from database import engine, get_db
 from sqlalchemy.orm import Session, sessionmaker
 from typing import List
-from schemas import Donations as DonationsSchema, Users, donationuser
-from models import Base, Donations, Users
+from schemas import Donations as DonationsSchema, Users, donationuser,Campaign
+from models import Base, Donations, Users, Notification, Campaign
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -22,11 +22,9 @@ router = APIRouter(
 def create_donation(donation: DonationsSchema, db: Session = Depends(get_db)):
     # Check if user exists
     db_user = db.query(Users).filter(Users.user_id == donation.user_id).first()
-
-    
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
-    
+
     db_donation = Donations(
         amount=donation.amount,
         donation_date=donation.donation_date,
@@ -37,6 +35,19 @@ def create_donation(donation: DonationsSchema, db: Session = Depends(get_db)):
     db.add(db_donation)
     db.commit()
     db.refresh(db_donation)
+
+    # Notify the campaign creator about the donation
+    campaign = db.query(Campaign).filter(Campaign.camp_id == donation.campaign_id).first()
+    if campaign:
+        db_notification = Notification(
+            user_id=campaign.creator_id,
+            type="New Donation",
+            message=f"Your campaign '{campaign.title}' received a donation of {donation.amount}.",
+            is_read=False
+        )
+        db.add(db_notification)
+        db.commit()
+
     return db_donation
 
 

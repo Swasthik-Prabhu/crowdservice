@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 from typing import List
-from models import Campaign, Donations, Users
+from models import Campaign, Donations, Users, Notification
 from database import get_db
 from schemas import Campaign as CampaignSchema, showcampaigns, updatecampaigns, CampaignResponse, DonationResponse, userdonated, Campaignuser
 
@@ -30,7 +30,20 @@ def create_campaign(campaign: CampaignSchema, db: Session = Depends(get_db)):
     db.add(db_campaign)
     db.commit()
     db.refresh(db_campaign)
-    return {"id" : new_camp_id}
+
+    # Notify all users about the new campaign
+    users = db.query(Users).all()
+    for user in users:
+        db_notification = Notification(
+            user_id=user.user_id,
+            type="New Campaign",
+            message=f"A new campaign '{db_campaign.title}' has been created.",
+            is_read=False
+        )
+        db.add(db_notification)
+    db.commit()
+
+    return {"id": new_camp_id}
  # Return the created campaign object
 
 
@@ -58,6 +71,19 @@ def update_campaign(campaign_id: int, updated_campaign: updatecampaigns, db: Ses
     
     db.commit()
     db.refresh(campaign)
+
+    # Notify all users about the updated campaign
+    users = db.query(Users).all()
+    for user in users:
+        db_notification = Notification(
+            user_id=user.user_id,
+            type="Updated Campaign",
+            message=f"The campaign '{campaign.title}' has been updated.",
+            is_read=False
+        )
+        db.add(db_notification)
+    db.commit()
+
     return campaign
 
 

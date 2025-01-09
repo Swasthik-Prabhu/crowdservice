@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Text, Boolean, DateTime, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -74,6 +74,7 @@ class Users(Base):
     campaigns = relationship("Campaign", back_populates="creator")  # Added campaigns relationship
     reports = relationship("Report", back_populates="user")
     donations = relationship("Donations", back_populates="user")  # Added donations relationship
+    notifications = relationship("Notification", back_populates="user")  # Added notifications relationship
 
 # Report Model
 class Report(Base):
@@ -101,3 +102,18 @@ class MileStone(Base):
 
     # Relationship with Campaign
     campaign = relationship("Campaign", back_populates="milestones")
+
+
+# Notification Model
+class Notification(Base):
+    __tablename__ = 'notifications'
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey('users.user_id', ondelete='CASCADE'), nullable=False)
+    type = Column(String(50), nullable=False)
+    message = Column(Text, nullable=False)
+    is_read = Column(Boolean, default=False)
+    timestamp = Column(DateTime, server_default=func.now())
+
+    user = relationship('Users', back_populates='notifications')  # Assuming User model has a backref
+

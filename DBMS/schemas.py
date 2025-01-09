@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr 
-from datetime import date
+from datetime import date, datetime
 
 # Campaign Schema
 class Campaign(BaseModel):
@@ -143,3 +143,21 @@ class MileStone(BaseModel):
     milestone_date : date
     description : str
     status : str
+# notification 
+
+class NotificationBase(BaseModel):
+    user_id: int
+    type: str
+    message: str
+
+class NotificationCreate(NotificationBase):
+    pass  # Used when creating a new notification
+
+class NotificationRead(NotificationBase):
+    id: int
+    is_read: bool
+    timestamp: datetime
+
+    class Config:
+        orm_mode = True  # Enables automatic conversion from ORM models to Pydantic
+

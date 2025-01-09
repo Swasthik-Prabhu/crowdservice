@@ -21,6 +21,8 @@ import YourCampaignsPage from './components/Campaigns/YourCampaignsPage'; // Imp
 import AdminAnalytics from './pages/AdminAnalytics'; // Import AdminAnalytics
 import MyDonationsPage from './components/Campaigns/MyDonationsPage';
 import AdminCampaignDetails from './components/Admincampaign/AdminCampaignDetails';
+import NotificationBadge from './components/Notification/NotificationBadge';
+import Notifications from './components/Notification/NotificationPage';
 
 function App() {
   return (
@@ -58,6 +60,10 @@ function App() {
           <Route path = "/report" element={<AdminReportList/>} />
           <Route path = "/admin-analytics" element={<AdminAnalytics/>} />
           <Route path = "/campaign-details" element={<AdminCampaignDetails/>} />
+
+          {/* Notifiction Route */}
+          <Route path="/notification" element={<NotificationBadge/>} />
+          <Route path = "/notiPage" element = {<Notifications />} />
 
         </Routes>
       </div>

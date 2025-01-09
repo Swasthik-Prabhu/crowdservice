@@ -1,0 +1,171 @@
+/* Base styles */
+.notifications-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Animated heading */
+.notifications-container h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+}
+
+.notifications-container h2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: slideInUnderline 0.8s forwards;
+}
+
+/* Notification list styles */
+.notification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    perspective: 1000px;
+}
+
+/* Individual notification styles */
+.notification-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+    animation: fadeInSlide 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* Unread notification styles */
+.notification-item.unread {
+    border-left-color: #3498db;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.05), transparent);
+}
+
+/* Read notification styles */
+.notification-item.read {
+    border-left-color: #95a5a6;
+    opacity: 0.8;
+}
+
+/* Hover effects */
+.notification-item:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* Notification content styles */
+.notification-item p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+}
+
+.notification-item strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Error message styles */
+.error {
+    background: #ff7675;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    animation: shake 0.5s ease-out;
+}
+
+/* Empty state message */
+.notification-list p:only-child {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 2rem;
+    font-style: italic;
+    animation: pulse 2s infinite;
+}
+
+/* Animations */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes slideInUnderline {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Stagger animation for notifications */
+.notification-item:nth-child(1) { animation-delay: 0.1s; }
+.notification-item:nth-child(2) { animation-delay: 0.2s; }
+.notification-item:nth-child(3) { animation-delay: 0.3s; }
+.notification-item:nth-child(4) { animation-delay: 0.4s; }
+.notification-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .notifications-container {
+        margin: 1rem;
+        padding: 0.5rem;
+    }
+
+    .notification-item {
+        padding: 1rem;
+    }
+}
+
+/* Optional: Add a custom scrollbar */
+.notifications-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notifications-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.notifications-container::-webkit-scrollbar-thumb {
+    background: #95a5a6;
+    border-radius: 4px;
+}
+
+.notifications-container::-webkit-scrollbar-thumb:hover {
+    background: #7f8c8d;
+}
