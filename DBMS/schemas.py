@@ -12,6 +12,10 @@ class Campaign(BaseModel):
     end_date : date
     creator_id : int  # foreign key
 
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
 class showcampaigns(BaseModel):
     camp_id : int 
     title : str
@@ -21,6 +25,10 @@ class showcampaigns(BaseModel):
     start_date : date
     end_date : date
     creator_id : int
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 class CampaignResponse(BaseModel):
     id: int
@@ -161,3 +169,12 @@ class NotificationRead(NotificationBase):
     class Config:
         orm_mode = True  # Enables automatic conversion from ORM models to Pydantic
 
+
+class Recommendation(BaseModel):
+    id: int
+    title: str
+    description: str
+    user_id: int # foreign key
+
+    class Config:
+        from_attributes = True

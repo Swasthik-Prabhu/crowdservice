@@ -67,7 +67,7 @@ class Users(Base):
     name = Column(String, nullable=False)
     contact = Column(Integer, nullable=False, unique=True)
     role = Column(String, nullable=False)
-    email = Column(String ,nullable = False)
+    email = Column(String ,nullable = False,unique=True)
     password = Column(String, nullable = False)
 
     # Relationship with Campaign and Report
@@ -75,6 +75,7 @@ class Users(Base):
     reports = relationship("Report", back_populates="user")
     donations = relationship("Donations", back_populates="user")  # Added donations relationship
     notifications = relationship("Notification", back_populates="user")  # Added notifications relationship
+    recommendations = relationship("Recommendation", back_populates="user")
 
 # Report Model
 class Report(Base):
@@ -116,4 +117,15 @@ class Notification(Base):
     timestamp = Column(DateTime, server_default=func.now())
 
     user = relationship('Users', back_populates='notifications')  # Assuming User model has a backref
+
+
+
+class Recommendation(Base):
+    __tablename__ = 'recommendations'
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    description = Column(String)
+    user_id = Column(Integer, ForeignKey('users.user_id'))
+
+    user = relationship("Users", back_populates="recommendations")
 

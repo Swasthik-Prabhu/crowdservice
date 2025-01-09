@@ -82,15 +82,22 @@ const CampaignForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="cause">Cause:</label>
-            <input
-              type="text"
-              id="cause"
-              name="cause"
-              value={form.cause}
-              onChange={handleChange}
-              required
-            />
+          <label htmlFor="cause">Cause:</label>
+  <select
+    id="cause"
+    name="cause"
+    value={form.cause}
+    onChange={handleChange}
+    required
+  >
+    <option value="" disabled>
+      Select a cause
+    </option>
+    <option value="Health">Health</option>
+    <option value="Natural Disaster">Natural Disaster</option>
+    <option value="Wildlife">Wildlife</option>
+    <option value="Welfare">Welfare</option>
+  </select>
           </div>
 
           <div className="form-group">

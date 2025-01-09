@@ -8,7 +8,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 # from typing import List
 
-from routes import campaign_routes, beneficiary_routes, donations_route, milestone_routes, user_routes, reports_route, Adminanalytics, Notification_routes
+from routes import campaign_routes, beneficiary_routes, donations_route, milestone_routes, user_routes, reports_route, Adminanalytics, Notification_routes, recommendations_route
 
 
 # http://localhost:3000
@@ -31,8 +31,7 @@ app.include_router(milestone_routes.router)
 app.include_router(reports_route.router)
 app.include_router(Adminanalytics.router)
 app.include_router(Notification_routes.router)
-
-
+app.include_router(recommendations_route.router)
 
 
 
